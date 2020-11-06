@@ -32,6 +32,9 @@ public class TicTacToeObj {
             i = EMPTY;
         }
     }
+    public int[] getFullGrid(){
+        return  container;
+    }
 
     private void resetGame(){
         initContainer();
