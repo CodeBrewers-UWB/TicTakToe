@@ -12,6 +12,7 @@ public class TicTacToe extends JPanel {
         for (int index = 0; index < 9; index++) {
             buttons[index] = new JButton();
             buttons[index].setText("");
+            buttons[index].addActionListener(new ButtonListener());
             add(buttons[index]);
         }
     }
