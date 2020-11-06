@@ -55,8 +55,54 @@ public class TicTacToeObj {
         return true;
     }
 
-    // just check if all grid is full
-    boolean isGridFull(){
-        return true;
+
+
+    //check if it is tie(no outcome possible), if it's tie should end the game.
+    //it has two situations: get tie before the grid is full and get tie when the grid is full.
+    //need to call isGameOver first, if no winner then check if it is a tie.
+    boolean isTie() {
+        int countEmpty = 0;
+        for (int n : container) {
+            if (n == EMPTY) countEmpty++;
+        }
+
+        if (countEmpty == 0) return true; // grid is full,  it's tie.
+        if (countEmpty > 1) return false; //when there is more than 1 empty, must not be a tie.
+
+        //one empty, check if it's tie on its row, col and diagonals.
+        int index = 0;
+        for (int i = 0; i < 9; i++) {
+            if (container[i] == EMPTY) {
+                index = i;
+                break;
+            }
+        }
+
+        int row = index / 3;
+        int col = index % 3;
+        int rowSum = 0;
+        int colSum = 0;
+
+        for (int i = row; i < row + 3; i++) {
+            rowSum += container[i];
+        }
+
+        for (int i = col; i <= col + 6; i += 3) {
+            colSum += container[i];
+        }
+
+        int diagonalSum1 = 0;
+        int diagonalSum2 = 0;
+        if (index == 0 || index == 4 || index == 8) {
+            diagonalSum1 = container[0] + container[4] + container[8];
+        }
+
+        if (index == 2 || index == 4 || index == 6) {
+            diagonalSum2 = container[2] + container[4] + container[6];
+        }
+
+        if (rowSum == 3 || colSum == 3 || diagonalSum1 == 3 || diagonalSum2 == 3) return true;
+
+        return false;
     }
 }
