@@ -8,8 +8,8 @@ import java.io.IOException;
 // Use the container for init / update of the UI
 public class TicTacToeObj {
     public static final  int EMPTY = 0;
-    public static  int CIRCLE = 1;
-    public static  int CROSS = 2;
+    public static  int CROSS = 1;
+    public static  int  CIRCLE= 2;
     public static final int PLAYER_ONE = 1;
     public static final int PLAYER_TWO = 2;
 
