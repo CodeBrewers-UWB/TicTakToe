@@ -2,22 +2,28 @@ package com.uwbothell.softwaremanagement;
 
 
 import java.io.IOException;
-
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.*;
 
 // UI control grab this object
 // Use the container for init / update of the UI
 public class TicTacToeObj {
-    public static final  int EMPTY = 0;
-    public static  int CROSS = 1;
-    public static  int  CIRCLE= 2;
+    public static final String EMPTY = "";
+    public static final String CROSS = "X";
+    public static final String CIRCLE = "O";
+
     public static final int PLAYER_ONE = 1;
     public static final int PLAYER_TWO = 2;
+    public static final int GAME_IN_PROGRESS = 0;
 
-    private int[] container;
+    private JButton[] container;
+    private Map<JButton, Integer> buttonPosition;
     private int currentTurn;
 
     public TicTacToeObj(){
-        container = new int[9];
+        container = new JButton[9];
+        buttonPosition = new HashMap<>();
         currentTurn = PLAYER_ONE;
         initContainer();
     }
@@ -27,43 +33,62 @@ public class TicTacToeObj {
         return this;
     }
 
-    private void initContainer(){
-        for(int i: container){
-            i = EMPTY;
+    private void initContainer() {
+        for (int index = 0; index < 9; index++) {
+            container[index] = new JButton();
+            container[index].setText(EMPTY);
+            container[index].addActionListener(new ButtonListener(this));
+            buttonPosition.putIfAbsent(container[index], index);
         }
     }
-    public int[] getFullGrid(){
-        return  container;
+
+    public JButton[] getFullGrid(){
+        return container;
     }
 
-    private void resetGame(){
+    public Map<JButton, Integer> getButtonPosition() {
+        return this.buttonPosition;
+    }
+
+    public void resetGame(){
         initContainer();
     }
 
-    //set value in the container
+    // set value in the container
     // input has to be either EMPTY, CIRCLE, CROSS
     // Need to use the player variable
-    private void setValue(int index, int input) throws IOException {
+    public void setValue(int index, String input) throws IOException {
         if(input != EMPTY || input != CIRCLE || input != CROSS){
             throw new IOException("wrong input for set value method");
         }
 
+        container[index].setText(input);
     }
 
     // Please implement the logic of checking the winner
-    boolean isGameOver(){
-        return true;
+    public boolean isGameOver(String winner){
+        return winner.equals(TicTacToeObj.CROSS) || winner.equals(TicTacToeObj.CIRCLE);
     }
 
-
+    public int getWinner(String winner) {
+        if (winner.equals(TicTacToeObj.CROSS)) {
+            return PLAYER_ONE;
+        }
+        else if (winner.equals(TicTacToeObj.CIRCLE)) {
+            return PLAYER_TWO;
+        }
+        else {
+            return GAME_IN_PROGRESS;
+        }
+    }
 
     //check if it is tie(no outcome possible), if it's tie should end the game.
     //it has two situations: get tie before the grid is full and get tie when the grid is full.
     //need to call isGameOver first, if no winner then check if it is a tie.
-    boolean isTie() {
+     boolean isTie() {
         int countEmpty = 0;
-        for (int n : container) {
-            if (n == EMPTY) countEmpty++;
+        for (JButton button : container) {
+            if (button.getText().equals(EMPTY)) countEmpty++;
         }
 
         if (countEmpty == 0) return true; // grid is full,  it's tie.
@@ -72,7 +97,7 @@ public class TicTacToeObj {
         //one empty, check if it's tie on its row, col and diagonals.
         int index = 0;
         for (int i = 0; i < 9; i++) {
-            if (container[i] == EMPTY) {
+            if (container[i].getText().equals(EMPTY)) {
                 index = i;
                 break;
             }
