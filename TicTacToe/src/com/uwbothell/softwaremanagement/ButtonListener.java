@@ -3,22 +3,43 @@ package com.uwbothell.softwaremanagement;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class ButtonListener implements ActionListener {
     private static int TURN_COUNT = 0;
+
+    private TicTacToeObj ticTacToeObj;
+
+    public ButtonListener(TicTacToeObj ticTacToeObj) {
+        this.ticTacToeObj = ticTacToeObj;
+    }
+
     public void actionPerformed(ActionEvent event) {
         JButton button = (JButton)event.getSource();
-        if (TURN_COUNT %2 == 0) {
-            button.setText("X");
+        int buttonIndex = ticTacToeObj.getButtonPosition().get(button);
+
+        try {
+            if (TURN_COUNT %2 == 0) {
+                ticTacToeObj.setValue(buttonIndex, TicTacToeObj.CROSS);
+            }
+            else {
+                ticTacToeObj.setValue(buttonIndex, TicTacToeObj.CIRCLE);
+            }
         }
-        else {
-            button.setText("O");
+        catch (IOException ex) {
+
         }
 
-        int winner =checkWinner();
-        // TODO
-        // After every click check if some player actually won the game (checkWinningCriteria() )
-        // If some player won, then say game is over and reset board (endGame(), resetBoard())
+        // After every click check if some player actually won the game
+        int winner = checkWinner();
+
+        // If some player won, then say game is over and reset board
+        if (ticTacToeObj.isGameOver(winner)) {
+            // Winner is decided so game ends
+            String winningMessage = "Congratulations Player " + ticTacToeObj.getWinner(winner) + " Won!";
+            JOptionPane.showConfirmDialog(null, winningMessage);
+            ticTacToeObj.resetGame();
+        }
 
         // Else, increment the count of turns and wait for next click
         TURN_COUNT ++;
@@ -29,13 +50,9 @@ public class ButtonListener implements ActionListener {
           2  if player 2 wins
           0 if no outcome */
     private int checkWinner() {
-       int winner=0;
-        TicTacToeObj obj=new  TicTacToeObj();
-        obj.getTicTacToeObj();
+        int winner=0;
 
-
-
-        int[] container=obj.getFullGrid();
+        int[] container=ticTacToeObj.getFullGrid();
 
         if(threeEqual(container[0],container[1],container[2]))
              winner=container[0];
