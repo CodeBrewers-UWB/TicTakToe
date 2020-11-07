@@ -19,6 +19,7 @@ public class TicTacToePanel extends JPanel {
 
             // call add method in JPanel to add every button in container to grid
             this.add(buttons[index]);
+            setPreferredSize(new Dimension(250, 200));
         }
     }
 }
