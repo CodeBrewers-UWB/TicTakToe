@@ -72,6 +72,11 @@ public class TicTacToeObj {
     public void resetGame() {
         // Set all values in container to EMPTY
         // All button text to EMPTY_TEXT
+        
+        Main.centerPanel.removeAll();
+  		Main.centerPanel.revalidate();
+  		Main.centerPanel.repaint();
+  		Main.CenterPanel();
 
     }
 
