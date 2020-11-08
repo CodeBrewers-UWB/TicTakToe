@@ -109,7 +109,7 @@ public class TicTacToeObj {
     }
 
     // Please implement the logic of checking the winner
-    public boolean isGameOver(int winner){
+    public boolean isGameOverWithWinner(int winner){
         return winner == TicTacToeObj.CROSS || winner == TicTacToeObj.CIRCLE;
     }
 
@@ -128,7 +128,7 @@ public class TicTacToeObj {
     //check if it is tie(no outcome possible), if it's tie should end the game.
     //it has two situations: get tie before the grid is full and get tie when the grid is full.
     //need to call isGameOver first, if no winner then check if it is a tie.
-    boolean isTie() {
+    boolean isGameOverWithTie() {
         int countEmpty = 0;
         for (int n : container) {
             if (n == EMPTY) countEmpty++;
@@ -151,7 +151,7 @@ public class TicTacToeObj {
         int rowSum = 0;
         int colSum = 0;
 
-        for (int i = row; i < row + 3; i++) {
+        for (int i = 3 *row; i < 3 * row + 3; i++) {
             rowSum += container[i];
         }
 
@@ -169,7 +169,7 @@ public class TicTacToeObj {
             diagonalSum2 = container[2] + container[4] + container[6];
         }
 
-        if (rowSum == 3 || colSum == 3 || diagonalSum1 == 3 || diagonalSum2 == 3) return true;
+        if (rowSum == 3 && colSum == 3 && (diagonalSum1 == 0 || diagonalSum1 == 3) && (diagonalSum2 == 3 || diagonalSum2 == 0)) return true;
 
         return false;
     }
