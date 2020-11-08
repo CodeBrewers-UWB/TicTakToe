@@ -109,8 +109,8 @@ public class ButtonListener implements ActionListener {
 
         boolean isEqual=false;
 
-        if(a==b && a==c)
 
+        if(a!=0 && a==b && a==c)
             isEqual=true;
 
         return  isEqual;
