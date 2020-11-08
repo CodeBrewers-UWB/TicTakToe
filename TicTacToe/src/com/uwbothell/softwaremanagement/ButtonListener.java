@@ -55,10 +55,15 @@ public class ButtonListener implements ActionListener {
         int winner = checkWinner();
 
         // If some player won, then say game is over and reset board
-        if (ticTacToeObj.isGameOver(winner)) {
+        if (ticTacToeObj.isGameOverWithWinner(winner)) {
             // Winner is decided so game ends
             String winningMessage = "Congratulations Player " + ticTacToeObj.getWinner(winner) + " Won!";
             JOptionPane.showConfirmDialog(null, winningMessage);
+            ticTacToeObj.resetGame();
+        } else if (ticTacToeObj.isGameOverWithTie()) {
+            //game is Tie so game ends
+            String tieMessage = "Game Over. No Winner.";
+            JOptionPane.showConfirmDialog(null, tieMessage);
             ticTacToeObj.resetGame();
         }
 
