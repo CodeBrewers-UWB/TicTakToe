@@ -1,7 +1,7 @@
 package com.uwbothell.softwaremanagement;
 
 import javax.swing.*;
-import java.awt.BorderLayout;
+import java.awt.*;
 
 public class Main extends JFrame {
     

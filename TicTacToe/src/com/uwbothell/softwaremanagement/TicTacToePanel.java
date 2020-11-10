@@ -1,6 +1,6 @@
 package com.uwbothell.softwaremanagement;
 
-import java.awt.GridLayout;
+import java.awt.*;
 import javax.swing.*;
 
 public class TicTacToePanel extends JPanel {
