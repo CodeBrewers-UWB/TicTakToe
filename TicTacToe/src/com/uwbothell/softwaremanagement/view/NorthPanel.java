@@ -1,15 +1,19 @@
 package com.uwbothell.softwaremanagement.view;
 
+import com.uwbothell.softwaremanagement.model.GridModel;
+
 import javax.swing.*;
 
 public class NorthPanel extends JPanel {
     JPanel panel;
     JLabel label;
 
-    String playerTurn = "X";
-    String initLabel = "Player " + playerTurn + " Turn";
 
-    public NorthPanel(){
+
+    public NorthPanel(GridModel gridModel){
+        String playerTurn = gridModel.getPlayerOneName();
+        String initLabel = "Player " + playerTurn + " Turn";
+
         panel = new JPanel();
         label = new JLabel();
         label.setText(initLabel);

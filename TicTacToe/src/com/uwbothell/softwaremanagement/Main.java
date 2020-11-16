@@ -3,6 +3,7 @@ package com.uwbothell.softwaremanagement;
 import com.uwbothell.softwaremanagement.controller.GameController;
 import com.uwbothell.softwaremanagement.model.TicTacToeObj;
 import com.uwbothell.softwaremanagement.view.GameView;
+import com.uwbothell.softwaremanagement.view.StartFrame;
 import com.uwbothell.softwaremanagement.view.TicTacToePanel;
 
 import javax.swing.*;
@@ -23,6 +24,7 @@ public class Main extends JFrame {
 
         TicTacToeObj model = new TicTacToeObj();
         GameView view = new GameView();
-        GameController controller = new GameController(view, model);
+        StartFrame startView = new StartFrame(view);
+        GameController controller = new GameController(view, model, startView);
     }
 }

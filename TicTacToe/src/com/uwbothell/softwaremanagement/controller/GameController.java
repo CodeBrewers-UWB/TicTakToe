@@ -1,23 +1,31 @@
 package com.uwbothell.softwaremanagement.controller;
 
-import com.uwbothell.softwaremanagement.model.GirdSymbols;
+import com.uwbothell.softwaremanagement.model.GridModel;
 import com.uwbothell.softwaremanagement.model.TicTacToeObj;
 import com.uwbothell.softwaremanagement.view.CenterPanel;
 import com.uwbothell.softwaremanagement.view.GameView;
+import com.uwbothell.softwaremanagement.view.StartFrame;
 import com.uwbothell.softwaremanagement.view.NorthPanel;
 
 import javax.swing.*;
-import java.util.Arrays;
 
 public class GameController {
     GameView gameView;
+    StartFrame startFrame;
     TicTacToeObj model;
 
-    public GameController(GameView gameView, TicTacToeObj model) {
+    public GameController(GameView gameView, TicTacToeObj model, StartFrame startFrame) {
         this.gameView = gameView;
         this.model = model;
+        this.startFrame = startFrame;
+        startFrame.setGameController(this);
         gameView.setController(this);
-        gameView.init();
+        initGame();
+    }
+
+    public void initGame() {
+        startFrame.start(this.startFrame);
+        //gameView.init();
     }
 
     public void resetGame() {
@@ -29,18 +37,22 @@ public class GameController {
         model.initContainer();
     }
 
+    public StartFrame getStartFrame() {
+        return this.startFrame;
+    }
+
     public TicTacToeObj getModel() {
         return model;
     }
 
-    public void updatePlayerIndicator() {
+    public void updatePlayerIndicator(GridModel gridModel) {
         NorthPanel panel = (NorthPanel) gameView.getNorthPanel();
-        String symbol = model.currentTurn == TicTacToeObj.PLAYER_ONE ? GirdSymbols.CROSS_TEXT : GirdSymbols.CIRCLE_TEXT;
+        String symbol = model.currentTurn == TicTacToeObj.PLAYER_ONE ? gridModel.getPlayerOneName() : gridModel.getPlayerTwoName();
         String label = "Player " + symbol + " Turn";
         panel.setLabelText(label);
     }
 
-    public void checkWinner() {
+    public void checkWinner(GridModel gridModel) {
         int winner = 0;
 
         int[] container = model.container;
@@ -72,7 +84,7 @@ public class GameController {
 
         if (isGameOverWithWinner(winner)) {
             // Winner is decided so game ends
-            String winningMessage = "Congratulations Player " + getWinner(winner) + " Won!";
+            String winningMessage = "Congratulations Player " + getWinner(winner, gridModel) + " Won!";
             JOptionPane.showConfirmDialog(null, winningMessage);
             resetGame();
         } else if (isGameOverWithTie()) {
@@ -96,13 +108,13 @@ public class GameController {
         return winner == TicTacToeObj.CROSS || winner == TicTacToeObj.CIRCLE;
     }
 
-    public int getWinner(int winner) {
+    public String getWinner(int winner, GridModel gridModel) {
         if (winner == TicTacToeObj.CROSS) {
-            return TicTacToeObj.PLAYER_ONE;
+            return gridModel.getPlayerOneName();
         } else if (winner == TicTacToeObj.CIRCLE) {
-            return TicTacToeObj.PLAYER_TWO;
+            return gridModel.getPlayerTwoName();
         } else {
-            return TicTacToeObj.GAME_IN_PROGRESS;
+            return gridModel.getEmptyText();
         }
     }
 
