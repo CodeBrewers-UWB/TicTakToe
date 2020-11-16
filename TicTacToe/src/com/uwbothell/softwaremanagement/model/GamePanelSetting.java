@@ -1,6 +1,6 @@
 package com.uwbothell.softwaremanagement.model;
 
-public class PanelSetting {
+public class GamePanelSetting {
     public static int mainWindowX = 300;
     public static int mainWindowY = 200;
     public static int mainWindowWidth = 300;
@@ -28,7 +28,7 @@ public class PanelSetting {
     }
 
     public static void setMainWindowX(int mainWindowX) {
-        PanelSetting.mainWindowX = mainWindowX;
+        GamePanelSetting.mainWindowX = mainWindowX;
     }
 
     public static int getMainWindowY() {
@@ -36,7 +36,7 @@ public class PanelSetting {
     }
 
     public static void setMainWindowY(int mainWindowY) {
-        PanelSetting.mainWindowY = mainWindowY;
+        GamePanelSetting.mainWindowY = mainWindowY;
     }
 
     public static int getMainWindowWidth() {
@@ -44,7 +44,7 @@ public class PanelSetting {
     }
 
     public static void setMainWindowWidth(int mainWindowWidth) {
-        PanelSetting.mainWindowWidth = mainWindowWidth;
+        GamePanelSetting.mainWindowWidth = mainWindowWidth;
     }
 
     public static int getMainWindowHeight() {
@@ -52,7 +52,7 @@ public class PanelSetting {
     }
 
     public static void setMainWindowHeight(int mainWindowHeight) {
-        PanelSetting.mainWindowHeight = mainWindowHeight;
+        GamePanelSetting.mainWindowHeight = mainWindowHeight;
     }
 
     public static int getRestartButtonWidth() {
@@ -60,7 +60,7 @@ public class PanelSetting {
     }
 
     public static void setRestartButtonWidth(int restartButtonWidth) {
-        PanelSetting.restartButtonWidth = restartButtonWidth;
+        GamePanelSetting.restartButtonWidth = restartButtonWidth;
     }
 
     public static int getRestartButtonHeight() {
@@ -68,7 +68,7 @@ public class PanelSetting {
     }
 
     public static void setRestartButtonHeight(int restartButtonHeight) {
-        PanelSetting.restartButtonHeight = restartButtonHeight;
+        GamePanelSetting.restartButtonHeight = restartButtonHeight;
     }
 
     public static int getSouthPanelWidth() {
@@ -76,7 +76,7 @@ public class PanelSetting {
     }
 
     public static void setSouthPanelWidth(int southPanelWidth) {
-        PanelSetting.southPanelWidth = southPanelWidth;
+        GamePanelSetting.southPanelWidth = southPanelWidth;
     }
 
     public static int getSouthPanelHeight() {
@@ -84,6 +84,6 @@ public class PanelSetting {
     }
 
     public static void setSouthPanelHeight(int southPanelHeight) {
-        PanelSetting.southPanelHeight = southPanelHeight;
+        GamePanelSetting.southPanelHeight = southPanelHeight;
     }
 }

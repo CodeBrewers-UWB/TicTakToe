@@ -1,6 +1,6 @@
 package com.uwbothell.softwaremanagement.controller;
 
-import com.uwbothell.softwaremanagement.model.GirdSymbols;
+import com.uwbothell.softwaremanagement.model.GridModel;
 import com.uwbothell.softwaremanagement.model.TicTacToeObj;
 
 import javax.swing.*;
@@ -12,11 +12,13 @@ public class GridButtonListener implements ActionListener {
     JButton button;
     int buttonID;
     GameController controller;
+    GridModel gridModel;
 
-    public GridButtonListener(JButton button, int buttonID, GameController controller){
+    public GridButtonListener(JButton button, int buttonID, GameController controller, GridModel gridModel){
         this.controller = controller;
         this.button = button;
         this.buttonID = buttonID;
+        this.gridModel = gridModel;
     }
 
     @Override
@@ -28,17 +30,16 @@ public class GridButtonListener implements ActionListener {
             System.out.println("gird occupied");
         }
         else if(model.currentTurn == TicTacToeObj.PLAYER_ONE) {
-            this.button.setText(GirdSymbols.CROSS_TEXT);
+            this.button.setText(gridModel.getPlayerOneIcon());
             model.currentTurn = TicTacToeObj.PLAYER_TWO;
             model.setValue(buttonID, TicTacToeObj.CROSS);
         }
         else {
-            this.button.setText(GirdSymbols.CIRCLE_TEXT);
+            this.button.setText(gridModel.getPlayerTwoIcon());
             model.currentTurn = TicTacToeObj.PLAYER_ONE;
             model.setValue(buttonID, TicTacToeObj.CIRCLE);
         }
-        controller.updatePlayerIndicator();
-        controller.checkWinner();
-
+        controller.updatePlayerIndicator(gridModel);
+        controller.checkWinner(gridModel);
     }
 }

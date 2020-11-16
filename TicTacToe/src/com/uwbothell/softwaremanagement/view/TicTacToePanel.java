@@ -2,21 +2,21 @@ package com.uwbothell.softwaremanagement.view;
 
 import com.uwbothell.softwaremanagement.controller.GameController;
 import com.uwbothell.softwaremanagement.controller.GridButtonListener;
-import com.uwbothell.softwaremanagement.model.GirdSymbols;
-import com.uwbothell.softwaremanagement.model.PanelSetting;
+import com.uwbothell.softwaremanagement.model.GamePanelSetting;
+import com.uwbothell.softwaremanagement.model.GridModel;
 import com.uwbothell.softwaremanagement.model.TicTacToeObj;
 
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.*;
 
 public class TicTacToePanel extends JPanel {
     TicTacToeObj model;
     JButton[] buttons;
     GameController controller;
+    GridModel gridModel;
 
-    public TicTacToePanel(GameController controller) {
+    public TicTacToePanel(GameController controller, GridModel gridModel) {
+        this.gridModel = gridModel;
         this.controller = controller;
         buttons = new JButton[9];
 
@@ -25,10 +25,10 @@ public class TicTacToePanel extends JPanel {
 
         for (int index = 0; index < 9 ; index ++) {
             buttons[index] = new JButton();
-            buttons[index].setText(GirdSymbols.EMPTY_TEXT);
-            buttons[index].addActionListener( new GridButtonListener(buttons[index], index,controller));
+            buttons[index].setText(gridModel.getEmptyText());
+            buttons[index].addActionListener( new GridButtonListener(buttons[index], index,controller, gridModel));
             this.add(buttons[index]);
-            setPreferredSize(new Dimension(PanelSetting.gridButtonWidth, PanelSetting.gridButtonHeight));
+            setPreferredSize(new Dimension(GamePanelSetting.gridButtonWidth, GamePanelSetting.gridButtonHeight));
         }
     }
 }

@@ -1,8 +1,8 @@
 package com.uwbothell.softwaremanagement.view;
 
 import com.uwbothell.softwaremanagement.controller.GameController;
-import com.uwbothell.softwaremanagement.model.PanelSetting;
-import com.uwbothell.softwaremanagement.model.TicTacToeObj;
+import com.uwbothell.softwaremanagement.model.GamePanelSetting;
+import com.uwbothell.softwaremanagement.model.GridModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,17 +19,17 @@ public class GameView {
 //        this.model = model;
     }
 
-    public void init(){
+    public void init(GridModel model){
         mainFrame = new JFrame("Lets Play... TIC TAC TOE");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setBounds(PanelSetting.getMainWindowX(),
-                PanelSetting.getMainWindowY(),
-                PanelSetting.getMainWindowWidth(),
-                PanelSetting.getMainWindowHeight());
+        mainFrame.setBounds(GamePanelSetting.getMainWindowX(),
+                GamePanelSetting.getMainWindowY(),
+                GamePanelSetting.getMainWindowWidth(),
+                GamePanelSetting.getMainWindowHeight());
 
-        northPanel = new NorthPanel();
+        northPanel = new NorthPanel(model);
         southPanel = new SouthPanel(controller);
-        centralPanel = new CenterPanel(controller);
+        centralPanel = new CenterPanel(controller, model);
 
         mainFrame.add(northPanel, BorderLayout.NORTH);
         mainFrame.add(centralPanel, BorderLayout.CENTER);
