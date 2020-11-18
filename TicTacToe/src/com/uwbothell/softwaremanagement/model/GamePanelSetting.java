@@ -15,6 +15,9 @@ public class GamePanelSetting {
     public static int gridButtonWidth = 250;
     public static int gridButtonHeight = 200;
 
+    public static int tipsButtonHeight = 18;
+    public static int tipsButtonWidth = 50;
+
     public static int getGridButtonWidth() {
         return gridButtonWidth;
     }
@@ -49,6 +52,14 @@ public class GamePanelSetting {
 
     public static int getMainWindowHeight() {
         return mainWindowHeight;
+    }
+
+    public static int getTipsButtonHeight() {
+        return tipsButtonHeight;
+    }
+
+    public static int getTipsButtonWidth() {
+        return tipsButtonWidth;
     }
 
     public static void setMainWindowHeight(int mainWindowHeight) {
