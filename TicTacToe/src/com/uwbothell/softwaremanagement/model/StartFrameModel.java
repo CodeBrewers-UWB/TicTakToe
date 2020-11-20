@@ -54,7 +54,7 @@ public class StartFrameModel {
         return comboBox2Label;
     }
 
-    public StartFrameModel() {
+    public StartFrameModel(JFrame parent) {
         label1=new JLabel(StartGameFrameSetting.getLabelOneText());
         label2=new JLabel(StartGameFrameSetting.getLabelTwoText());
         label1TextField=new JTextField();
@@ -66,7 +66,7 @@ public class StartFrameModel {
         comboBox1 = new JComboBox(StartGameFrameSetting.getIcons());
         comboBox2 = new JComboBox(StartGameFrameSetting.getIcons());
         comboBox2.setSelectedIndex(1);
-        comboBox1.addActionListener(new ComboBox1Listener(this));
+        comboBox1.addActionListener(new ComboBox1Listener(this, parent));
         comboBox2.addActionListener(new ComboBox2Listener(this));
         initStartButton();
     }
