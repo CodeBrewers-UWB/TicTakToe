@@ -54,4 +54,9 @@ public class GameHistoryObj {
             return new HashMap<String, int[]>();
         }
     }
+
+
+    public HashMap<String, int[]> getGameData(){
+        return gameData;
+    }
 }

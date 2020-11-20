@@ -10,6 +10,10 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class GameView {
@@ -49,6 +53,22 @@ public class GameView {
         mainFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+                HashMap<String, int[]> data = gameData.getGameData();
+                try {
+                FileWriter myWriter = new FileWriter(gameDataFile,true);
+                for(Map.Entry<String, int[]> entry : data.entrySet()){
+                        String s = entry.getKey();
+                        int[] score= entry.getValue();
+                        myWriter.write(s +"="+score[0]+","+ score[1]+","+ score[2]);
+
+                    }
+                    myWriter.close();
+                    System.out.println("Successfully wrote to the file.");
+                }
+                catch (IOException exe) {
+                        System.out.println("An error occurred.");
+                        exe.printStackTrace();
+                    }
 
                 System.exit(0);
             }
