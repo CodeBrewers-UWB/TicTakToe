@@ -1,16 +1,16 @@
 package com.uwbothell.softwaremanagement.model;
 
 public class GamePanelSetting {
-    public static int mainWindowX = 300;
-    public static int mainWindowY = 200;
+    public static int mainWindowX = 350;
+    public static int mainWindowY = 350;
     public static int mainWindowWidth = 300;
     public static int mainWindowHeight = 350;
 
     public static int restartButtonWidth = 100;
     public static int restartButtonHeight = 20;
 
-    public static int southPanelWidth = 100;
-    public static int southPanelHeight = 40;
+    public static int southPanelWidth = 300;
+    public static int southPanelHeight = 60;
 
     public static int gridButtonWidth = 250;
     public static int gridButtonHeight = 200;
