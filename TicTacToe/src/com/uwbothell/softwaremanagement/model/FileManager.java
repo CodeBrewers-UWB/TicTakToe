@@ -1,8 +1,8 @@
 package com.uwbothell.softwaremanagement.model;
 
-import java.io.File;  // Import the File class
-import java.io.FileWriter;   // Import the FileWriter class
-import java.io.IOException;  // Import the IOException class to handle errors
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class FileManager {
     public static void createFile() {
