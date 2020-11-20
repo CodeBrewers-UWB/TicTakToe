@@ -13,28 +13,31 @@ public class GameView {
     public JPanel southPanel;
     public JPanel centralPanel;
 
-//    TicTacToeObj model;
+    //    TicTacToeObj model;
     GameController controller;
     public GameView(){
 //        this.model = model;
     }
 
     public void init(GridModel model){
-        mainFrame = new JFrame("Lets Play... TIC TAC TOE");
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setBounds(GamePanelSetting.getMainWindowX(),
-                GamePanelSetting.getMainWindowY(),
-                GamePanelSetting.getMainWindowWidth(),
-                GamePanelSetting.getMainWindowHeight());
 
-        northPanel = new NorthPanel(model);
-        southPanel = new SouthPanel(controller);
-        centralPanel = new CenterPanel(controller, model);
+            mainFrame = new JFrame("Lets Play... TIC TAC TOE");
+            mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            mainFrame.setBounds(GamePanelSetting.getMainWindowX(),
+                    GamePanelSetting.getMainWindowY(),
+                    GamePanelSetting.getMainWindowWidth(),
+                    GamePanelSetting.getMainWindowHeight());
 
-        mainFrame.add(northPanel, BorderLayout.NORTH);
-        mainFrame.add(centralPanel, BorderLayout.CENTER);
-        mainFrame.add(southPanel, BorderLayout.SOUTH);
-        mainFrame.setVisible(true);
+
+            northPanel = new NorthPanel(model);
+            southPanel = new SouthPanel(controller, model);
+            centralPanel = new CenterPanel(controller, model);
+
+            mainFrame.add(northPanel, BorderLayout.NORTH);
+            mainFrame.add(centralPanel, BorderLayout.CENTER);
+            mainFrame.add(southPanel, BorderLayout.SOUTH);
+            mainFrame.setVisible(true);
+
     }
 
     public void setController(GameController controller) {
