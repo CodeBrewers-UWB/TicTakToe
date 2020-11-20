@@ -27,7 +27,7 @@ public class GridButtonListener implements ActionListener {
 
         if(button.getText().length()>0){
             // pop up error or do nothing
-            System.out.println("gird occupied");
+            System.out.println("grid occupied");
         }
         else if(model.currentTurn == TicTacToeObj.PLAYER_ONE) {
             this.button.setText(gridModel.getPlayerOneIcon());

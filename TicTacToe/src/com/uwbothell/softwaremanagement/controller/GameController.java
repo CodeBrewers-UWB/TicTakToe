@@ -6,7 +6,7 @@ import com.uwbothell.softwaremanagement.view.CenterPanel;
 import com.uwbothell.softwaremanagement.view.GameView;
 import com.uwbothell.softwaremanagement.view.StartFrame;
 import com.uwbothell.softwaremanagement.view.NorthPanel;
-
+import com.uwbothell.softwaremanagement.view.SouthPanel;
 import javax.swing.*;
 
 public class GameController {
@@ -35,6 +35,11 @@ public class GameController {
         centralPanel.repaint();
         centralPanel.resetPanel();
         model.initContainer();
+        SouthPanel southPanel = (SouthPanel) gameView.getSouthPanel();
+        southPanel.removeAll();
+        southPanel.revalidate();
+        southPanel.repaint();
+        southPanel.initSouthPanel();
     }
 
     public StartFrame getStartFrame() {
@@ -86,11 +91,15 @@ public class GameController {
             // Winner is decided so game ends
             String winningMessage = "Congratulations Player " + getWinner(winner, gridModel) + " Won!";
             JOptionPane.showConfirmDialog(null, winningMessage);
+            gridModel.updateHistory(winner);
+
             resetGame();
         } else if (isGameOverWithTie()) {
             //game is Tie so game ends
             String tieMessage = "Game Over. No Winner.";
             JOptionPane.showConfirmDialog(null, tieMessage);
+            gridModel.updateHistory(winner);
+
             resetGame();
         }
     }
