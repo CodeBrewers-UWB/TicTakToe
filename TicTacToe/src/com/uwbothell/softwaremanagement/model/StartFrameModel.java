@@ -1,5 +1,7 @@
 package com.uwbothell.softwaremanagement.model;
 
+import com.uwbothell.softwaremanagement.controller.ComboBox1Listener;
+import com.uwbothell.softwaremanagement.controller.ComboBox2Listener;
 import com.uwbothell.softwaremanagement.controller.StartButtonListener;
 
 import javax.swing.*;
@@ -56,11 +58,16 @@ public class StartFrameModel {
         label1=new JLabel(StartGameFrameSetting.getLabelOneText());
         label2=new JLabel(StartGameFrameSetting.getLabelTwoText());
         label1TextField=new JTextField();
+        label1TextField.setText("Aden");
         label2TextField=new JTextField();
+        label2TextField.setText("Bob");
         comboBox1Label = new JLabel(StartGameFrameSetting.getComboBox1LabelText());
         comboBox2Label = new JLabel(StartGameFrameSetting.getComboBox2LabelText());
         comboBox1 = new JComboBox(StartGameFrameSetting.getIcons());
         comboBox2 = new JComboBox(StartGameFrameSetting.getIcons());
+        comboBox2.setSelectedIndex(1);
+        comboBox1.addActionListener(new ComboBox1Listener(this));
+        comboBox2.addActionListener(new ComboBox2Listener(this));
         initStartButton();
     }
 
