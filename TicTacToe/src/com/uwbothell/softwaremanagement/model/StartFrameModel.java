@@ -67,7 +67,7 @@ public class StartFrameModel {
         comboBox2 = new JComboBox(StartGameFrameSetting.getIcons());
         comboBox2.setSelectedIndex(1);
         comboBox1.addActionListener(new ComboBox1Listener(this, parent));
-        comboBox2.addActionListener(new ComboBox2Listener(this));
+        comboBox2.addActionListener(new ComboBox2Listener(this, parent));
         initStartButton();
     }
 

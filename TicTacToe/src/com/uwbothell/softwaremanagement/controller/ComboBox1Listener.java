@@ -1,5 +1,6 @@
 package com.uwbothell.softwaremanagement.controller;
 
+import com.uwbothell.softwaremanagement.model.CustomPicHolder;
 import com.uwbothell.softwaremanagement.model.StartFrameModel;
 
 import javax.swing.*;
@@ -28,8 +29,6 @@ public class ComboBox1Listener implements ActionListener {
         int indexOne = model.getComboBox1().getSelectedIndex();
         int indexTwo = model.getComboBox2().getSelectedIndex();
 
-
-
         if(indexOne == maxNum-1){
             System.out.println("custom option picked");
             JFileChooser fileChooser = new JFileChooser();
@@ -38,10 +37,11 @@ public class ComboBox1Listener implements ActionListener {
             int userSelection = fileChooser.showSaveDialog(parent);
             if (userSelection == JFileChooser.APPROVE_OPTION) {
                 File fileToSave = fileChooser.getSelectedFile();
-                System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+                String path = fileToSave.getAbsolutePath();
+                System.out.println("Save as file: " + path);
+                CustomPicHolder.playerOnePath = path;
             }
-        }
-        else if(indexOne == indexTwo) {
+        }else if(indexOne == indexTwo) {
             // avoid two comboBox to get same symbol
             int random = rand.nextInt(maxNum);
             while(random == indexTwo){
