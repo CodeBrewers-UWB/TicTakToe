@@ -92,10 +92,15 @@ public class StartFrameModel {
         label2TextField.setBounds(textFieldX, yBounds + yOffset, StartGameFrameSetting.getTextFieldWidth(), labelHeight);
         comboBox1.setBounds(150, 200,90,20);
         comboBox2.setBounds(150, yBounds + yOffset + 40, 90, 20);
-        startButton.setBounds(50, 300, 100, 30);
+        startButton.setBounds(130, 320, 120, 30);
+        Playwithcom.setBounds(110 , 350,160,  39);
     }
 
     public void setButtonListener(StartButtonListener listener) {
         startButton.addActionListener(listener);
     }
+    public void setButtonListener(PlaywithcomListener listener) {
+    	Playwithcom.addActionListener(listener);
+    }
+    
 }

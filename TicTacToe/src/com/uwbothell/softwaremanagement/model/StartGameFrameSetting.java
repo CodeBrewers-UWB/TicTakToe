@@ -17,6 +17,7 @@ public class StartGameFrameSetting {
 
     private static String startGameTitle = "START GAME";
     private static String startButtonText = "START";
+    private static String PlaywithcomButtonText = "Play with Computer";
     private static String icons[]={"X","O","*","\uF0C6"};
 
     public static int getLabelXBounds() {
@@ -65,6 +66,11 @@ public class StartGameFrameSetting {
 
     public static String getStartGameTitle() {
         return startGameTitle;
+    }
+    
+    public static String getPlaywithcomButtonText() 
+    {	
+    	return PlaywithcomButtonText;
     }
 
     public static String getStartButtonText() {
