@@ -3,14 +3,10 @@ package com.uwbothell.softwaremanagement.model;
 import java.io.*;
 import java.util.HashMap;
 
-/**
- * Created by sayali on 11/16/20.
- */
 public class GameHistoryObj {
 
 
     private HashMap<String, int[]> gameData = new HashMap<String, int[]>();
-
 
     public GameHistoryObj(String fileName) throws Exception {
         this.gameData = generateGameData(fileName);

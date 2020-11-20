@@ -18,25 +18,17 @@ public class SouthPanel extends JPanel{
     JButton button;
     GameController controller;
     GridModel gridModel;
-    public GameHistoryObj gameData;
-    final static String gameDataFile = "GameData.txt";
 
-    public SouthPanel(GameController controller, GridModel gridModel){
-        try {
+    public SouthPanel(GameController controller, GridModel gridModel,GameHistoryObj gameData ){
 
             this.controller=controller;
             this.gridModel=gridModel;
-            gameData = new GameHistoryObj(gameDataFile);
 
             int[] scores=gameData.getGameHistory(gridModel.getPlayerOneName(),gridModel.getPlayerTwoName());
 
             gridModel.setHistory(scores);
             initSouthPanel();
-        }catch (FileNotFoundException fnfe) {
-            System.err.println(gameDataFile + " file not found !!");
-        }catch (Exception e){
 
-        }
     }
 
     public void initSouthPanel(){
