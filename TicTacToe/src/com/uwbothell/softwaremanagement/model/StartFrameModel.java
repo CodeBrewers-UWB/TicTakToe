@@ -2,6 +2,7 @@ package com.uwbothell.softwaremanagement.model;
 
 import com.uwbothell.softwaremanagement.controller.ComboBox1Listener;
 import com.uwbothell.softwaremanagement.controller.ComboBox2Listener;
+import com.uwbothell.softwaremanagement.controller.PlaywithcomListener;
 import com.uwbothell.softwaremanagement.controller.StartButtonListener;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ public class StartFrameModel {
     private JTextField label1TextField;
     private JTextField label2TextField;
     private JButton startButton;
+    private JButton Playwithcom;
 
     private JComboBox comboBox1;
     private JComboBox comboBox2;
@@ -92,10 +94,15 @@ public class StartFrameModel {
         label2TextField.setBounds(textFieldX, yBounds + yOffset, StartGameFrameSetting.getTextFieldWidth(), labelHeight);
         comboBox1.setBounds(150, 200,90,20);
         comboBox2.setBounds(150, yBounds + yOffset + 40, 90, 20);
-        startButton.setBounds(50, 300, 100, 30);
+        startButton.setBounds(130, 320, 120, 30);
+        Playwithcom.setBounds(110 , 350,160,  39);
     }
 
     public void setButtonListener(StartButtonListener listener) {
         startButton.addActionListener(listener);
     }
+    public void setButtonListener(PlaywithcomListener listener) {
+    	Playwithcom.addActionListener(listener);
+    }
+    
 }
