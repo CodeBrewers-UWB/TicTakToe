@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+
 import java.util.Random;
 
 public class ComboBox1Listener implements ActionListener {
@@ -43,6 +44,7 @@ public class ComboBox1Listener implements ActionListener {
             }
         }else if(indexOne == indexTwo) {
             // avoid two comboBox to get same symbol
+
             int random = rand.nextInt(maxNum);
             while(random == indexTwo){
                 random = rand.nextInt(maxNum);

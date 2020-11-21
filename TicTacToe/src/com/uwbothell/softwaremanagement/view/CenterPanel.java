@@ -24,4 +24,10 @@ public class CenterPanel extends JPanel{
         panel.add(new TicTacToePanel(controller, model));
         this.add(panel);
     }
+    
+    public void playwithcom(){
+        panel = new JPanel();
+        panel.add(new TicTacToePanel(controller, model));
+        this.add(panel);
+    }
 }
