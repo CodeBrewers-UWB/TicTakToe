@@ -2,6 +2,7 @@ package com.uwbothell.softwaremanagement.model;
 
 import com.uwbothell.softwaremanagement.controller.ComboBox1Listener;
 import com.uwbothell.softwaremanagement.controller.ComboBox2Listener;
+import com.uwbothell.softwaremanagement.controller.PlaywithcomListener;
 import com.uwbothell.softwaremanagement.controller.StartButtonListener;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ public class StartFrameModel {
     private JTextField label1TextField;
     private JTextField label2TextField;
     private JButton startButton;
+    private JButton Playwithcom;
 
     private JComboBox comboBox1;
     private JComboBox comboBox2;
