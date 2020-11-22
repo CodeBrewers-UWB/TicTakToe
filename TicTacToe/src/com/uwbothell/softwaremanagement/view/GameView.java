@@ -1,6 +1,7 @@
 package com.uwbothell.softwaremanagement.view;
 
 import com.uwbothell.softwaremanagement.controller.GameController;
+import com.uwbothell.softwaremanagement.model.FrameConstants;
 import com.uwbothell.softwaremanagement.model.GameHistoryObj;
 import com.uwbothell.softwaremanagement.model.GamePanelSetting;
 import com.uwbothell.softwaremanagement.model.GridModel;
@@ -41,11 +42,11 @@ public class GameView {
         southPanel = new SouthPanel(controller, model,gameData);
         centralPanel = new CenterPanel(controller, model);
 
+        mainFrame.getContentPane().setBackground(new Color(FrameConstants.r, FrameConstants.g, FrameConstants.b));
         mainFrame.add(northPanel, BorderLayout.NORTH);
         mainFrame.add(centralPanel, BorderLayout.CENTER);
         mainFrame.add(southPanel, BorderLayout.SOUTH);
         mainFrame.setVisible(true);
-
         mainFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {

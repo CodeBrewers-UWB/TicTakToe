@@ -1,6 +1,7 @@
 package com.uwbothell.softwaremanagement.view;
 
 import com.uwbothell.softwaremanagement.controller.TipsButtonListener;
+import com.uwbothell.softwaremanagement.model.FrameConstants;
 import com.uwbothell.softwaremanagement.model.GamePanelSetting;
 import com.uwbothell.softwaremanagement.model.GridModel;
 
@@ -32,7 +33,9 @@ public class NorthPanel extends JPanel {
 
         panel.add(label);
         panel.add(button);
+        panel.setBackground(new Color(FrameConstants.r, FrameConstants.g, FrameConstants.b));
         this.add(panel);
+        this.setBackground(new Color(FrameConstants.r, FrameConstants.g, FrameConstants.b));
     }
 
     public void setLabelText(String input){
