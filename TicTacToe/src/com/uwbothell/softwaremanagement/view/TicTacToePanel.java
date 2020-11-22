@@ -7,6 +7,10 @@ import com.uwbothell.softwaremanagement.model.GridModel;
 import com.uwbothell.softwaremanagement.model.TicTacToeObj;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class TicTacToePanel extends JPanel {

@@ -12,6 +12,7 @@ public class GridModel {
     private int draw;
 
 
+
     public GridModel(String playerOneName, String playerTwoName, String playerOneIcon, String playerTwoIcon) {
         this.playerOneIcon = playerOneIcon;
         this.playerTwoIcon = playerTwoIcon;

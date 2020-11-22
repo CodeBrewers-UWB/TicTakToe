@@ -44,7 +44,7 @@ public class StartFrame extends JFrame {
 
     private void initFrameItems() {
         container = getContentPane();
-        startFrameModel = new StartFrameModel();
+        startFrameModel = new StartFrameModel(this);
         startFrameModel.setButtonListener(new StartButtonListener(startFrameModel, this, this.nextFrame));
     }
 
