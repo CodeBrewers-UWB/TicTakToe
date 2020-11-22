@@ -1,5 +1,8 @@
 package com.uwbothell.softwaremanagement.model;
 
+import com.uwbothell.softwaremanagement.controller.ComboBox1Listener;
+import com.uwbothell.softwaremanagement.controller.ComboBox2Listener;
+import com.uwbothell.softwaremanagement.controller.PlaywithcomListener;
 import com.uwbothell.softwaremanagement.controller.StartButtonListener;
 
 import javax.swing.*;
@@ -12,6 +15,7 @@ public class StartFrameModel {
     private JTextField label1TextField;
     private JTextField label2TextField;
     private JButton startButton;
+    private JButton Playwithcom;
 
     private JComboBox comboBox1;
     private JComboBox comboBox2;
@@ -52,15 +56,20 @@ public class StartFrameModel {
         return comboBox2Label;
     }
 
-    public StartFrameModel() {
+    public StartFrameModel(JFrame parent) {
         label1=new JLabel(StartGameFrameSetting.getLabelOneText());
         label2=new JLabel(StartGameFrameSetting.getLabelTwoText());
         label1TextField=new JTextField();
+        label1TextField.setText("Aden");
         label2TextField=new JTextField();
+        label2TextField.setText("Bob");
         comboBox1Label = new JLabel(StartGameFrameSetting.getComboBox1LabelText());
         comboBox2Label = new JLabel(StartGameFrameSetting.getComboBox2LabelText());
         comboBox1 = new JComboBox(StartGameFrameSetting.getIcons());
         comboBox2 = new JComboBox(StartGameFrameSetting.getIcons());
+        comboBox2.setSelectedIndex(1);
+        comboBox1.addActionListener(new ComboBox1Listener(this, parent));
+        comboBox2.addActionListener(new ComboBox2Listener(this, parent));
         initStartButton();
     }
 
@@ -85,10 +94,15 @@ public class StartFrameModel {
         label2TextField.setBounds(textFieldX, yBounds + yOffset, StartGameFrameSetting.getTextFieldWidth(), labelHeight);
         comboBox1.setBounds(150, 200,90,20);
         comboBox2.setBounds(150, yBounds + yOffset + 40, 90, 20);
-        startButton.setBounds(50, 300, 100, 30);
+        startButton.setBounds(130, 320, 120, 30);
+//        Playwithcom.setBounds(110 , 350,160,  39);
     }
 
     public void setButtonListener(StartButtonListener listener) {
         startButton.addActionListener(listener);
     }
+    public void setButtonListener(PlaywithcomListener listener) {
+    	Playwithcom.addActionListener(listener);
+    }
+    
 }
