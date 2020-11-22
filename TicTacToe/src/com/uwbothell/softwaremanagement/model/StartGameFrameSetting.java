@@ -2,7 +2,7 @@ package com.uwbothell.softwaremanagement.model;
 
 public class StartGameFrameSetting {
     private static int labelXBounds = 50;
-    private static int yBounds = 150;
+    private static int yBounds = 280;
     private static int labelWidth = 100;
     private static int labelHeight = 30;
     private static int yOffset = 70;

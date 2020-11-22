@@ -2,6 +2,7 @@ package com.uwbothell.softwaremanagement.view;
 
 import com.uwbothell.softwaremanagement.controller.GameController;
 import com.uwbothell.softwaremanagement.controller.StartButtonListener;
+import com.uwbothell.softwaremanagement.model.FrameConstants;
 import com.uwbothell.softwaremanagement.model.StartFrameModel;
 import com.uwbothell.softwaremanagement.model.StartGameFrameSetting;
 
@@ -59,6 +60,7 @@ public class StartFrame extends JFrame {
 
     private void addComponentsToContainer()
     {
+        designContainer();
         container.add(startFrameModel.getLabel1());
         container.add(startFrameModel.getLabel2());
         container.add(startFrameModel.getLabel1TextField());
@@ -68,5 +70,12 @@ public class StartFrame extends JFrame {
         container.add(startFrameModel.getComboBox2Label());
         container.add(startFrameModel.getComboBox2());
         container.add(startFrameModel.getStartButton());
+        container.add(startFrameModel.getImageLabel());
+    }
+
+    private void designContainer() {
+        //container.setBackground(new Color(174, 163, 246));
+        //container.setBackground(new Color(252, 221, 168));
+        container.setBackground(new Color(FrameConstants.r, FrameConstants.g, FrameConstants.b));
     }
 }

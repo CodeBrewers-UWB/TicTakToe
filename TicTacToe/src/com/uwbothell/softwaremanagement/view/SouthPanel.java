@@ -2,6 +2,7 @@ package com.uwbothell.softwaremanagement.view;
 
 import com.uwbothell.softwaremanagement.controller.GameController;
 import com.uwbothell.softwaremanagement.controller.ResetButtonListener;
+import com.uwbothell.softwaremanagement.model.FrameConstants;
 import com.uwbothell.softwaremanagement.model.GameHistoryObj;
 import com.uwbothell.softwaremanagement.model.GamePanelSetting;
 import com.uwbothell.softwaremanagement.model.GridModel;
@@ -47,8 +48,9 @@ public class SouthPanel extends JPanel{
         panel.add(label1);
         panel.add(label2);
         panel.add(button);
-
+        panel.setBackground(new Color(FrameConstants.r, FrameConstants.g, FrameConstants.b));
         this.add(panel);
+        this.setBackground(new Color(FrameConstants.r, FrameConstants.g, FrameConstants.b));
 
     }
 }
