@@ -2,6 +2,7 @@ package com.uwbothell.softwaremanagement.view;
 
 import com.uwbothell.softwaremanagement.controller.GameController;
 import com.uwbothell.softwaremanagement.controller.GridButtonListener;
+import com.uwbothell.softwaremanagement.model.FrameConstants;
 import com.uwbothell.softwaremanagement.model.GamePanelSetting;
 import com.uwbothell.softwaremanagement.model.GridModel;
 import com.uwbothell.softwaremanagement.model.TicTacToeObj;
@@ -23,6 +24,7 @@ public class TicTacToePanel extends JPanel {
         this.gridModel = gridModel;
         this.controller = controller;
         buttons = new JButton[9];
+        this.setBackground(new Color(FrameConstants.r, FrameConstants.g, FrameConstants.b));
 
         // Set the grid layout to 3 X 3
         setLayout(new GridLayout(3, 3));
