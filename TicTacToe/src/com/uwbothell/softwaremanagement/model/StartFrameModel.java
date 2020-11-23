@@ -144,7 +144,9 @@ public class StartFrameModel {
         label2TextField.setBounds(textFieldX, yBounds + yOffset, StartGameFrameSetting.getTextFieldWidth(), labelHeight);
         comboBox1.setBounds(150, yBounds + 40,90,20);
         comboBox2.setBounds(150, yBounds + yOffset + 40, 90, 20);
-        startButton.setBounds(80, yBounds + yOffset + 100, 150, 50);
+       // startButton.setBounds(80, yBounds + yOffset + 100, 150, 50);
+        startButton.setBounds(130, 320, 120, 30);
+        Playwithcom.setBounds(110 , 350,160,  39);
     }
 
     public void setButtonListener(StartButtonListener listener) {
