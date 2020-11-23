@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -54,24 +55,32 @@ public class GameView {
             @Override
             public void windowClosing(WindowEvent e) {
                 HashMap<String, int[]> data = gameData.getGameData();
-                try {
-                FileWriter myWriter = new FileWriter(gameDataFile,true);
-                for(Map.Entry<String, int[]> entry : data.entrySet()){
-                        String s = entry.getKey();
-                        int[] score= entry.getValue();
-                        myWriter.write(s +"="+score[0]+","+ score[1]+","+ score[2]);
+//                if (data != null) {
+//                    for (Map.Entry<String, int[]> ent : data.entrySet()) {
+//                        System.out.println("inside the loop");
+//                        System.out.println(ent.getKey() + " = " + ent.getValue());
+//                    }
 
-                    }
-                    myWriter.close();
-                    System.out.println("Successfully wrote to the file.");
-                }
-                catch (IOException exe) {
+                    try {
+                        System.out.println(data.size());
+                        BufferedWriter output = new BufferedWriter(new FileWriter(gameDataFile, true));
+                        int count = 0;
+                        for (Map.Entry<String, int[]> entry : data.entrySet()) {
+                            String s = entry.getKey();
+                            int[] score = entry.getValue();
+                            output.write(s + "=" + score[0] + "," + score[1] + "," + score[2]);
+                            output.newLine();
+                            count++;
+
+                        }
+                        output.close();
+                        System.out.println("Successfully wrote to the file." + count);
+                    } catch (IOException exe) {
                         System.out.println("An error occurred.");
                         exe.printStackTrace();
                     }
-
                 System.exit(0);
-            }
+                }
         });
 
         }catch (FileNotFoundException fnfe) {

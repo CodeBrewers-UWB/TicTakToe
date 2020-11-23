@@ -57,6 +57,11 @@ public class GameHistoryObj {
 
 
     public HashMap<String, int[]> getGameData(){
-        return gameData;
-    }
+        try {
+            return gameData;
+        }catch (Exception e){
+              return null;
+            }
+        }
+
 }
