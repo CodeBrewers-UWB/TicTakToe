@@ -51,6 +51,10 @@ public class StartFrameModel {
     public JButton getStartButton() {
         return startButton;
     }
+    
+    public JButton getPlaywithcom() {
+        return Playwithcom;
+    }
 
     public JComboBox getComboBox1() {
         return comboBox1;
@@ -84,6 +88,7 @@ public class StartFrameModel {
         comboBox2.addActionListener(new ComboBox2Listener(this, parent));
         initStartButton();
         initImageLabel();
+        initPlayeithcomButton();
     }
 
     private void initImageLabel() {
@@ -102,6 +107,10 @@ public class StartFrameModel {
         catch (Exception ex) {
             System.out.println("pooh");
         }
+    }
+    
+      private void initPlayeithcomButton() {
+    	Playwithcom=new JButton(StartGameFrameSetting.getPlaywithcomButtonText());
     }
 
     private ImageIcon compressPicFromURL(String urlString, int width, int height){
