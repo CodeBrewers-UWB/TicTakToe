@@ -102,7 +102,7 @@ public class StartFrameModel {
 
     private void initStartButton() {
         try {
-            startButton = new JButton(compressPicFromURL("https://i.ibb.co/VYSgDBf/play-icon.png", 150, 50));
+            startButton = new JButton(compressPicFromURL("https://i.ibb.co/VYSgDBf/play-icon.png", 120, 35));
         }
         catch (Exception ex) {
             System.out.println("pooh");
@@ -145,8 +145,8 @@ public class StartFrameModel {
         comboBox1.setBounds(150, yBounds + 40,90,20);
         comboBox2.setBounds(150, yBounds + yOffset + 40, 90, 20);
        // startButton.setBounds(80, yBounds + yOffset + 100, 150, 50);
-        startButton.setBounds(130, 320, 120, 30);
-        Playwithcom.setBounds(110 , 350,160,  39);
+        startButton.setBounds(130, 450, 120, 30);
+        Playwithcom.setBounds(110 , 490,160,  39);
     }
 
     public void setButtonListener(StartButtonListener listener) {

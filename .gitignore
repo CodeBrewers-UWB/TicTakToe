@@ -27,4 +27,7 @@ TicTakToe.iml
 .idea/vcs.xml
 .idea/.gitignore
 out/production/TicTakToe/META-INF/TicTakToe.kotlin_module
-.idea
+
+# ignore mac files
+**/.DS_Store
+

@@ -40,7 +40,8 @@ public class GameView {
                 GamePanelSetting.getMainWindowY(),
                 GamePanelSetting.getMainWindowWidth(),
                 GamePanelSetting.getMainWindowHeight());
-        northPanel = new NorthPanel(model);
+        northPanel = new NorthPanel(controller, model);
+
         southPanel = new SouthPanel(controller, model,gameData);
         centralPanel = new CenterPanel(controller, model);
 

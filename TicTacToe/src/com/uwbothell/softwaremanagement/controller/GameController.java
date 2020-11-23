@@ -43,6 +43,8 @@ public class GameController {
         southPanel.revalidate();
         southPanel.repaint();
         southPanel.initSouthPanel();
+
+        resetClock();
     }
 
     public StartFrame getStartFrame() {
@@ -59,7 +61,22 @@ public class GameController {
         String label = "Player " + symbol + " Turn";
         panel.setLabelText(label);
     }
+    
+    public void resetClock() {
+    	NorthPanel panel = (NorthPanel) gameView.getNorthPanel();
+    	panel.resetClock();
+    }
 
+    public void stopClock() {
+    	NorthPanel panel = (NorthPanel) gameView.getNorthPanel();
+    	panel.stopClock();
+    }
+        
+    public void timesUp() {
+    	JOptionPane.showMessageDialog(null, "No more time!");
+    	resetGame();
+    }
+    
     public void checkWinner(GridModel gridModel) {
         int winner = 0;
 
@@ -92,18 +109,22 @@ public class GameController {
 
         if (isGameOverWithWinner(winner)) {
             // Winner is decided so game ends
+        	stopClock();
             String winningMessage = "Congratulations Player " + getWinner(winner, gridModel) + " Won!";
             JOptionPane.showConfirmDialog(null, winningMessage);
             gridModel.updateHistory(winner);
             gamehistory.putGameData(gridModel.getPlayerOneName()+" & "+gridModel.getPlayerTwoName(),gridModel.getHistory());
             resetGame();
+
         } else if (isGameOverWithTie()) {
             //game is Tie so game ends
+        	stopClock();
             String tieMessage = "Game Over. No Winner.";
             JOptionPane.showConfirmDialog(null, tieMessage);
             gridModel.updateHistory(winner);
             gamehistory.putGameData(gridModel.getPlayerOneName()+" & "+gridModel.getPlayerTwoName(),gridModel.getHistory());
             resetGame();
+            
         }
     }
 
