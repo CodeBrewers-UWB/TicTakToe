@@ -57,6 +57,7 @@ public class GridButtonListener implements ActionListener {
         }
         controller.updatePlayerIndicator(gridModel);
         controller.checkWinner(gridModel);
+        controller.resetClock();
     }
 
     private void conpressPic(String path){
