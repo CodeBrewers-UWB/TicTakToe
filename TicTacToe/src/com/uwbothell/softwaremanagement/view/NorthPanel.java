@@ -17,8 +17,6 @@ public class NorthPanel extends JPanel {
     JButton button;
     GameController controller;
 
-
-
     public NorthPanel(GameController controller, GridModel gridModel){
         String playerTurn = gridModel.getPlayerOneName();
         String initLabel = "Player " + playerTurn + " Turn";
@@ -37,7 +35,8 @@ public class NorthPanel extends JPanel {
 
         button = new JButton("Get Tips");
         button.setPreferredSize(new Dimension(GamePanelSetting.getTipsButtonWidth(), GamePanelSetting.getTipsButtonHeight()));
-        button.addActionListener(new TipsButtonListener());
+
+        button.addActionListener(new TipsButtonListener(controller));
 
         panel.add(label);
         panel.add(clock.getClockLabel());
@@ -50,7 +49,7 @@ public class NorthPanel extends JPanel {
     public void setLabelText(String input){
         label.setText(input);
     }
-    
+
     public void resetClock() {
     	clock.resetClock();
     }
