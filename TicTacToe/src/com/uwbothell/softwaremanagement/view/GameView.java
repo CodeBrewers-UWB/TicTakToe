@@ -38,7 +38,7 @@ public class GameView {
 
         gameData = new GameHistoryObj(gameDataFile);
 
-        northPanel = new NorthPanel(model);
+        northPanel = new NorthPanel(controller, model);
         southPanel = new SouthPanel(controller, model,gameData);
         centralPanel = new CenterPanel(controller, model);
 
