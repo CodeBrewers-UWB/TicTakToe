@@ -2,9 +2,17 @@ package com.uwbothell.softwaremanagement.model;
 
 import com.uwbothell.softwaremanagement.controller.ComboBox1Listener;
 import com.uwbothell.softwaremanagement.controller.ComboBox2Listener;
+import com.uwbothell.softwaremanagement.controller.PlaywithcomListener;
 import com.uwbothell.softwaremanagement.controller.StartButtonListener;
+import com.uwbothell.softwaremanagement.util.ImageUtil;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 public class StartFrameModel {
     private JLabel label1;
@@ -14,6 +22,8 @@ public class StartFrameModel {
     private JTextField label1TextField;
     private JTextField label2TextField;
     private JButton startButton;
+    private JButton Playwithcom;
+    private JLabel imageLabel;
 
     private JComboBox comboBox1;
     private JComboBox comboBox2;
@@ -41,6 +51,10 @@ public class StartFrameModel {
     public JButton getStartButton() {
         return startButton;
     }
+    
+    public JButton getPlaywithcom() {
+        return Playwithcom;
+    }
 
     public JComboBox getComboBox1() {
         return comboBox1;
@@ -54,7 +68,11 @@ public class StartFrameModel {
         return comboBox2Label;
     }
 
-    public StartFrameModel() {
+    public JLabel getImageLabel() {
+        return imageLabel;
+    }
+
+    public StartFrameModel(JFrame parent) {
         label1=new JLabel(StartGameFrameSetting.getLabelOneText());
         label2=new JLabel(StartGameFrameSetting.getLabelTwoText());
         label1TextField=new JTextField();
@@ -66,13 +84,46 @@ public class StartFrameModel {
         comboBox1 = new JComboBox(StartGameFrameSetting.getIcons());
         comboBox2 = new JComboBox(StartGameFrameSetting.getIcons());
         comboBox2.setSelectedIndex(1);
-        comboBox1.addActionListener(new ComboBox1Listener(this));
-        comboBox2.addActionListener(new ComboBox2Listener(this));
+        comboBox1.addActionListener(new ComboBox1Listener(this, parent));
+        comboBox2.addActionListener(new ComboBox2Listener(this, parent));
         initStartButton();
+        initImageLabel();
+        initPlayeithcomButton();
+    }
+
+    private void initImageLabel() {
+        try {
+            imageLabel = new JLabel(compressPicFromURL("https://i.ibb.co/GtTW6Sy/bg3.png", 200, 200));
+        }
+        catch (Exception ex) {
+
+        }
     }
 
     private void initStartButton() {
-        startButton=new JButton(StartGameFrameSetting.getStartButtonText());
+        try {
+            startButton = new JButton(compressPicFromURL("https://i.ibb.co/VYSgDBf/play-icon.png", 150, 50));
+        }
+        catch (Exception ex) {
+            System.out.println("pooh");
+        }
+    }
+    
+      private void initPlayeithcomButton() {
+    	Playwithcom=new JButton(StartGameFrameSetting.getPlaywithcomButtonText());
+    }
+
+    private ImageIcon compressPicFromURL(String urlString, int width, int height){
+        BufferedImage pic = null;
+        try {
+            URL url = new URL(urlString);
+            pic = ImageIO.read(url);
+
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
+
+        return ImageUtil.createCompressedImage(pic, width, height);
     }
 
     public void designModelItems() {
@@ -84,14 +135,16 @@ public class StartFrameModel {
 
         int textFieldX = StartGameFrameSetting.getTextFieldXBounds();
 
+        imageLabel.setBounds(70, 20, 200, 200);
         label1.setBounds(labelX, yBounds, labelWidth, labelHeight);
         comboBox1Label.setBounds(labelX, yBounds + 40, labelWidth, labelHeight);
         label2.setBounds(labelX, yBounds + yOffset, labelWidth, labelHeight);
         comboBox2Label.setBounds(labelX, yBounds + yOffset + 30, labelWidth, labelHeight);
         label1TextField.setBounds(textFieldX, yBounds, StartGameFrameSetting.getTextFieldWidth(), labelHeight);
         label2TextField.setBounds(textFieldX, yBounds + yOffset, StartGameFrameSetting.getTextFieldWidth(), labelHeight);
-        comboBox1.setBounds(150, 200,90,20);
+        comboBox1.setBounds(150, yBounds + 40,90,20);
         comboBox2.setBounds(150, yBounds + yOffset + 40, 90, 20);
+       // startButton.setBounds(80, yBounds + yOffset + 100, 150, 50);
         startButton.setBounds(130, 320, 120, 30);
         Playwithcom.setBounds(110 , 350,160,  39);
     }
@@ -99,8 +152,8 @@ public class StartFrameModel {
     public void setButtonListener(StartButtonListener listener) {
         startButton.addActionListener(listener);
     }
+
     public void setButtonListener(PlaywithcomListener listener) {
     	Playwithcom.addActionListener(listener);
     }
-    
 }

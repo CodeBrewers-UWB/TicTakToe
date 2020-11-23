@@ -2,7 +2,7 @@ package com.uwbothell.softwaremanagement.model;
 
 public class StartGameFrameSetting {
     private static int labelXBounds = 50;
-    private static int yBounds = 150;
+    private static int yBounds = 280;
     private static int labelWidth = 100;
     private static int labelHeight = 30;
     private static int yOffset = 70;
@@ -17,8 +17,8 @@ public class StartGameFrameSetting {
 
     private static String startGameTitle = "START GAME";
     private static String startButtonText = "START";
+    private static String icons[]={"X","O","*","\uF0C6", "custom"};
     private static String PlaywithcomButtonText = "Play with Computer";
-    private static String icons[]={"X","O","*","\uF0C6"};
 
     public static int getLabelXBounds() {
         return labelXBounds;
