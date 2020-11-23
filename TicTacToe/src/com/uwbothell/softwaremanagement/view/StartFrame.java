@@ -47,6 +47,7 @@ public class StartFrame extends JFrame {
         container = getContentPane();
         startFrameModel = new StartFrameModel(this);
         startFrameModel.setButtonListener(new StartButtonListener(startFrameModel, this, this.nextFrame));
+        startFrameModel.setButtonListener(new PlaywithcomListener(startFrameModel, this, this.nextFrame));
     }
 
     private void setContainerLayout()
@@ -71,6 +72,7 @@ public class StartFrame extends JFrame {
         container.add(startFrameModel.getComboBox2());
         container.add(startFrameModel.getStartButton());
         container.add(startFrameModel.getImageLabel());
+        container.add(startFrameModel.getPlaywithcom());
     }
 
     private void designContainer() {
