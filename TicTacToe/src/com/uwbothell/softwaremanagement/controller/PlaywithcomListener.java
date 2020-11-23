@@ -21,14 +21,7 @@ public class PlaywithcomListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+             currentFrame.setVisible(false);
 
-        String player1 = model.getLabel1TextField().getText();
-        String player2 = model.getLabel2TextField().getText();
-
-        String player1Icon = StartGameFrameSetting.getIcons()[model.getComboBox1().getSelectedIndex()];
-        String player2Icon = StartGameFrameSetting.getIcons()[model.getComboBox2().getSelectedIndex()];
-
-        currentFrame.setVisible(false);
-        nextFrame.init(new GridModel(player1, player2, player1Icon, player2Icon));
     }
 }
