@@ -12,6 +12,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class TicTacToePanel extends JPanel {
@@ -36,5 +38,19 @@ public class TicTacToePanel extends JPanel {
             this.add(buttons[index]);
             setPreferredSize(new Dimension(GamePanelSetting.gridButtonWidth, GamePanelSetting.gridButtonHeight));
         }
+    }
+
+    public void highlightButton(int index) {
+
+        //buttons[index].setBackground(Color.GREEN);
+        buttons[index].setBackground(new Color(39, 216, 39));
+        buttons[index].setOpaque(true);
+
+        ActionListener timerListener = evt -> buttons[index].setBackground(null);
+
+        Timer timer = new Timer(2500, timerListener);
+
+        timer.start();
+
     }
 }
