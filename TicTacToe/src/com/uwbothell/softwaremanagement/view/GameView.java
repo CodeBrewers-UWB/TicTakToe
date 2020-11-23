@@ -25,11 +25,11 @@ public class GameView {
     public JPanel centralPanel;
     public GameHistoryObj gameData;
     final static String gameDataFile = "GameData.txt";
-
     //    TicTacToeObj model;
     GameController controller;
-    public GameView(){
+    public GameView(GameHistoryObj history){
 //        this.model = model;
+        this.gameData = history;
     }
 
     public void init(GridModel model){
@@ -40,9 +40,6 @@ public class GameView {
                 GamePanelSetting.getMainWindowY(),
                 GamePanelSetting.getMainWindowWidth(),
                 GamePanelSetting.getMainWindowHeight());
-
-        gameData = new GameHistoryObj(gameDataFile);
-
         northPanel = new NorthPanel(model);
         southPanel = new SouthPanel(controller, model,gameData);
         centralPanel = new CenterPanel(controller, model);
@@ -56,15 +53,9 @@ public class GameView {
             @Override
             public void windowClosing(WindowEvent e) {
                 HashMap<String, int[]> data = gameData.getGameData();
-//                if (data != null) {
-//                    for (Map.Entry<String, int[]> ent : data.entrySet()) {
-//                        System.out.println("inside the loop");
-//                        System.out.println(ent.getKey() + " = " + ent.getValue());
-//                    }
-
                     try {
                         System.out.println(data.size());
-                        BufferedWriter output = new BufferedWriter(new FileWriter(gameDataFile, true));
+                        BufferedWriter output = new BufferedWriter(new FileWriter(gameDataFile, false));
                         int count = 0;
                         for (Map.Entry<String, int[]> entry : data.entrySet()) {
                             String s = entry.getKey();
@@ -84,8 +75,6 @@ public class GameView {
                 }
         });
 
-        }catch (FileNotFoundException fnfe) {
-            System.err.println(gameDataFile + " file not found !!");
         }catch (Exception e){
 
         }

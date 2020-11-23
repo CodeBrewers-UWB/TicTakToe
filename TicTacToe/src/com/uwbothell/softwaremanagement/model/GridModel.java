@@ -47,6 +47,10 @@ public class GridModel {
 
     }
 
+    public int[] getHistory(){
+        return new int[]{playerOneWins,playerTwoWins,draw};
+    }
+
     public void updateHistory(int winner){
 
         if(winner==1)

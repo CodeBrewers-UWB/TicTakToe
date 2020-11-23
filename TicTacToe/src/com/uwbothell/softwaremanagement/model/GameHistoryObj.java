@@ -64,4 +64,8 @@ public class GameHistoryObj {
             }
         }
 
+    public void putGameData(String key, int[] array){
+           gameData.put(key,array);
+    }
+
 }
