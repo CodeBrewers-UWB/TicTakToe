@@ -1,23 +1,26 @@
 package com.uwbothell.softwaremanagement.controller;
 
+import com.uwbothell.softwaremanagement.model.GameHistoryObj;
 import com.uwbothell.softwaremanagement.model.GridModel;
 import com.uwbothell.softwaremanagement.model.TicTacToeObj;
-import com.uwbothell.softwaremanagement.view.CenterPanel;
-import com.uwbothell.softwaremanagement.view.GameView;
-import com.uwbothell.softwaremanagement.view.StartFrame;
-import com.uwbothell.softwaremanagement.view.NorthPanel;
-import com.uwbothell.softwaremanagement.view.SouthPanel;
+import com.uwbothell.softwaremanagement.view.*;
+
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class GameController {
     GameView gameView;
     StartFrame startFrame;
     TicTacToeObj model;
+    GameHistoryObj gamehistory;
 
-    public GameController(GameView gameView, TicTacToeObj model, StartFrame startFrame) {
+    public GameController(GameView gameView, TicTacToeObj model, StartFrame startFrame,GameHistoryObj history) {
         this.gameView = gameView;
         this.model = model;
         this.startFrame = startFrame;
+        this.gamehistory = history;
         startFrame.setGameController(this);
         gameView.setController(this);
         initGame();
@@ -40,6 +43,8 @@ public class GameController {
         southPanel.revalidate();
         southPanel.repaint();
         southPanel.initSouthPanel();
+
+        resetClock();
     }
 
     public StartFrame getStartFrame() {
@@ -56,7 +61,22 @@ public class GameController {
         String label = "Player " + symbol + " Turn";
         panel.setLabelText(label);
     }
+    
+    public void resetClock() {
+    	NorthPanel panel = (NorthPanel) gameView.getNorthPanel();
+    	panel.resetClock();
+    }
 
+    public void stopClock() {
+    	NorthPanel panel = (NorthPanel) gameView.getNorthPanel();
+    	panel.stopClock();
+    }
+        
+    public void timesUp() {
+    	JOptionPane.showMessageDialog(null, "No more time!");
+    	resetGame();
+    }
+    
     public void checkWinner(GridModel gridModel) {
         int winner = 0;
 
@@ -89,18 +109,22 @@ public class GameController {
 
         if (isGameOverWithWinner(winner)) {
             // Winner is decided so game ends
+        	stopClock();
             String winningMessage = "Congratulations Player " + getWinner(winner, gridModel) + " Won!";
             JOptionPane.showConfirmDialog(null, winningMessage);
             gridModel.updateHistory(winner);
-
+            gamehistory.putGameData(gridModel.getPlayerOneName()+" & "+gridModel.getPlayerTwoName(),gridModel.getHistory());
             resetGame();
+
         } else if (isGameOverWithTie()) {
             //game is Tie so game ends
+        	stopClock();
             String tieMessage = "Game Over. No Winner.";
             JOptionPane.showConfirmDialog(null, tieMessage);
             gridModel.updateHistory(winner);
-
+            gamehistory.putGameData(gridModel.getPlayerOneName()+" & "+gridModel.getPlayerTwoName(),gridModel.getHistory());
             resetGame();
+            
         }
     }
 
@@ -177,5 +201,71 @@ public class GameController {
             return true;
 
         return false;
+    }
+
+
+
+    public int getTips() {
+        int[] container = model.getContainer();
+
+        int player = model.currentTurn;
+        int opponent = player == TicTacToeObj.PLAYER_ONE ? TicTacToeObj.PLAYER_TWO : TicTacToeObj.PLAYER_ONE;
+
+        List<Integer> spaces = new ArrayList<>();
+
+        //check if the player can win
+        for (int i = 0; i < 9; i++) {
+            if (container[i] == TicTacToeObj.EMPTY) {
+                spaces.add(i);
+                model.setValue(i, player);
+                if (isPlayerWin(player, container, i)) {
+                    model.setValue(i, TicTacToeObj.EMPTY);
+                    return i;
+                }
+                model.setValue(i, TicTacToeObj.EMPTY);
+            }
+        }
+
+        //check if can block the opponent
+        for (int i = 0; i < 9; i++) {
+            if (container[i] == TicTacToeObj.EMPTY) {
+                model.setValue(i, opponent);
+                if (isPlayerWin(opponent, container, i)) {
+                    model.setValue(i, TicTacToeObj.EMPTY);
+                    return i;
+                }
+                model.setValue(i, TicTacToeObj.EMPTY);
+            }
+        }
+
+        Random rand = new Random();
+        int random = rand.nextInt(spaces.size());
+        return random;
+
+    }
+
+    private boolean isPlayerWin(int player, int[] container, int index) {
+        int row = index / 3;
+        int col = index % 3;
+
+        int rs = 3 * row;
+        int cs = col;
+        if (threeEqual(container[rs], container[rs + 1], container[rs + 2]) && container[rs] == player) return true;
+        if (threeEqual(container[cs], container[cs + 3], container[cs + 6]) && container[col] == player) return true;
+        if (index == 2 || index == 4 || index == 6) {
+            if (threeEqual(container[2], container[4], container[6]) && container[2] == player) return true;
+        }
+
+        if (index == 0 || index == 4 || index == 8) {
+            if (threeEqual(container[0], container[4], container[8]) && container[0] == player) return true;
+        }
+
+        return false;
+    }
+
+    public void highlightButton(int index) {
+        CenterPanel centerPanel = (CenterPanel) gameView.getCentralPanel();
+        TicTacToePanel ticTacToePanel = centerPanel.getTicTacToePanel();
+        ticTacToePanel.highlightButton(index);
     }
 }

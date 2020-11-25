@@ -54,4 +54,18 @@ public class GameHistoryObj {
             return new HashMap<String, int[]>();
         }
     }
+
+
+    public HashMap<String, int[]> getGameData(){
+        try {
+            return gameData;
+        }catch (Exception e){
+              return null;
+            }
+        }
+
+    public void putGameData(String key, int[] array){
+           gameData.put(key,array);
+    }
+
 }

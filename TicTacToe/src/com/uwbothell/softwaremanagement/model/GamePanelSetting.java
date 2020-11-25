@@ -4,7 +4,7 @@ public class GamePanelSetting {
     public static int mainWindowX = 350;
     public static int mainWindowY = 350;
     public static int mainWindowWidth = 300;
-    public static int mainWindowHeight = 350;
+    public static int mainWindowHeight = 400;
 
     public static int restartButtonWidth = 100;
     public static int restartButtonHeight = 20;
