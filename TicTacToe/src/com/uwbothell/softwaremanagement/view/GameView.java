@@ -10,7 +10,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class GameView {
@@ -20,11 +25,11 @@ public class GameView {
     public JPanel centralPanel;
     public GameHistoryObj gameData;
     final static String gameDataFile = "GameData.txt";
-
     //    TicTacToeObj model;
     GameController controller;
-    public GameView(){
+    public GameView(GameHistoryObj history){
 //        this.model = model;
+        this.gameData = history;
     }
 
     public void init(GridModel model){
@@ -35,10 +40,8 @@ public class GameView {
                 GamePanelSetting.getMainWindowY(),
                 GamePanelSetting.getMainWindowWidth(),
                 GamePanelSetting.getMainWindowHeight());
-
-        gameData = new GameHistoryObj(gameDataFile);
-
         northPanel = new NorthPanel(controller, model);
+
         southPanel = new SouthPanel(controller, model,gameData);
         centralPanel = new CenterPanel(controller, model);
 
@@ -50,12 +53,29 @@ public class GameView {
         mainFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+                HashMap<String, int[]> data = gameData.getGameData();
+                    try {
+                        System.out.println(data.size());
+                        BufferedWriter output = new BufferedWriter(new FileWriter(gameDataFile, false));
+                        int count = 0;
+                        for (Map.Entry<String, int[]> entry : data.entrySet()) {
+                            String s = entry.getKey();
+                            int[] score = entry.getValue();
+                            output.write(s + "=" + score[0] + "," + score[1] + "," + score[2]);
+                            output.newLine();
+                            count++;
+
+                        }
+                        output.close();
+                        System.out.println("Successfully wrote to the file." + count);
+                    } catch (IOException exe) {
+                        System.out.println("An error occurred.");
+                        exe.printStackTrace();
+                    }
                 System.exit(0);
-            }
+                }
         });
 
-        }catch (FileNotFoundException fnfe) {
-            System.err.println(gameDataFile + " file not found !!");
         }catch (Exception e){
 
         }

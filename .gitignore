@@ -30,3 +30,4 @@ out/production/TicTakToe/META-INF/TicTakToe.kotlin_module
 
 # ignore mac files
 **/.DS_Store
+

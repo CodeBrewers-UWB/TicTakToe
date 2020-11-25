@@ -1,5 +1,6 @@
 package com.uwbothell.softwaremanagement.controller;
 
+import com.uwbothell.softwaremanagement.model.GameHistoryObj;
 import com.uwbothell.softwaremanagement.model.GridModel;
 import com.uwbothell.softwaremanagement.model.TicTacToeObj;
 import com.uwbothell.softwaremanagement.view.*;
@@ -13,11 +14,13 @@ public class GameController {
     GameView gameView;
     StartFrame startFrame;
     TicTacToeObj model;
+    GameHistoryObj gamehistory;
 
-    public GameController(GameView gameView, TicTacToeObj model, StartFrame startFrame) {
+    public GameController(GameView gameView, TicTacToeObj model, StartFrame startFrame,GameHistoryObj history) {
         this.gameView = gameView;
         this.model = model;
         this.startFrame = startFrame;
+        this.gamehistory = history;
         startFrame.setGameController(this);
         gameView.setController(this);
         initGame();
@@ -110,15 +113,16 @@ public class GameController {
             String winningMessage = "Congratulations Player " + getWinner(winner, gridModel) + " Won!";
             JOptionPane.showConfirmDialog(null, winningMessage);
             gridModel.updateHistory(winner);
+            gamehistory.putGameData(gridModel.getPlayerOneName()+" & "+gridModel.getPlayerTwoName(),gridModel.getHistory());
+            resetGame();
 
-            resetGame();                       
         } else if (isGameOverWithTie()) {
             //game is Tie so game ends
         	stopClock();
             String tieMessage = "Game Over. No Winner.";
             JOptionPane.showConfirmDialog(null, tieMessage);
             gridModel.updateHistory(winner);
-
+            gamehistory.putGameData(gridModel.getPlayerOneName()+" & "+gridModel.getPlayerTwoName(),gridModel.getHistory());
             resetGame();
             
         }
