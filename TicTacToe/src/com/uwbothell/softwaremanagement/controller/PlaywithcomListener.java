@@ -13,6 +13,7 @@ public class PlaywithcomListener implements ActionListener {
     StartFrameModel model;
     StartFrame currentFrame;
     GameView nextFrame;
+    public static int ClickonPlaywithComputer= 0;
     public PlaywithcomListener(StartFrameModel model, StartFrame currentFrame, GameView nextFrame){
         this.model = model;
         this.currentFrame = currentFrame;
@@ -21,9 +22,10 @@ public class PlaywithcomListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        ClickonPlaywithComputer = 1;
 
         String player1 = model.getLabel1TextField().getText();
-        String player2 = model.getLabel2TextField().getText();
+        String player2 = "Computer";
 
         String player1Icon = StartGameFrameSetting.getIcons()[model.getComboBox1().getSelectedIndex()];
         String player2Icon = StartGameFrameSetting.getIcons()[model.getComboBox2().getSelectedIndex()];
