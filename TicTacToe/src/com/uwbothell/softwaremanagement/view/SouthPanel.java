@@ -34,11 +34,10 @@ public class SouthPanel extends JPanel{
 
     public void initSouthPanel(){
         panel = new JPanel();
-        label1 = new JLabel(gridModel.getPlayerOneName() + "  [" +gridModel.getPlayerOneIcon() +"] " + ": " +gridModel.getPlayerOneWins() + "     Vs    " + gridModel.getPlayerTwoName() + "  [" + gridModel.getPlayerTwoIcon() + "] " + ": " +gridModel.getPlayerTwoWins() );
-        // label1.setIconTextGap(10);
-        label2 = new JLabel("Draw    : "+gridModel.getDraw());
-        //label2.setIconTextGap(10);
-
+        label1 = new JLabel(gridModel.getPlayerOneName() + "  [" +gridModel.getPlayerOneIcon() +"] " + ": " +gridModel.getPlayerOneWins() + "     Vs    " + gridModel.getPlayerTwoName()
+                + "  [" + gridModel.getPlayerTwoIcon() + "] " + ": " +gridModel.getPlayerTwoWins()+"   Draw  : "+gridModel.getDraw() );
+        label1.setFont(new java.awt.Font("Arial", Font.BOLD, 15));
+        label1.setForeground(Color.BLUE);
         button = new JButton("Restart");
         button.setPreferredSize(new Dimension(GamePanelSetting.getRestartButtonWidth(), GamePanelSetting.getRestartButtonHeight()));
         button.addActionListener(new ResetButtonListener(controller));
@@ -46,7 +45,6 @@ public class SouthPanel extends JPanel{
         panel.setPreferredSize(new Dimension(GamePanelSetting.getSouthPanelWidth(), GamePanelSetting.getSouthPanelHeight()));
 
         panel.add(label1);
-        panel.add(label2);
         panel.add(button);
         panel.setBackground(new Color(FrameConstants.r, FrameConstants.g, FrameConstants.b));
         this.add(panel);
