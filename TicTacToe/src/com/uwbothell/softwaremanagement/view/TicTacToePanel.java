@@ -18,7 +18,7 @@ import javax.swing.*;
 
 public class TicTacToePanel extends JPanel {
     TicTacToeObj model;
-    JButton[] buttons;
+    public static JButton[] buttons;
     GameController controller;
     GridModel gridModel;
 
