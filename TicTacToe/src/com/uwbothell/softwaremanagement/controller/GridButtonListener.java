@@ -30,16 +30,27 @@ public class GridButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         model = controller.getModel();
 
+        String filePath = new File("").getAbsolutePath();
+        System.out.println(filePath);
         if(button.getText().length()>0){
             // pop up error or do nothing
             System.out.println("grid occupied");
         }
         else if(model.currentTurn == TicTacToeObj.PLAYER_ONE) {
             String buttonText = gridModel.getPlayerOneIcon();
-            this.button.setText(buttonText);
+//            this.button.setText(buttonText);
 
             if(buttonText.length()>1){
                 conpressPic(buttonText);
+            }else if (buttonText.equals("X")){
+
+                String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\X.jpg");
+//                System.out.println(tempFileName);
+                conpressPic (tempFileName);
+            }else if (buttonText.equals("O")){
+                String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\O.jpg");
+
+                conpressPic (tempFileName);
             }else this.button.setText(buttonText);
 
             model.currentTurn = TicTacToeObj.PLAYER_TWO;
@@ -47,9 +58,18 @@ public class GridButtonListener implements ActionListener {
         }
         else {
             String buttonText = gridModel.getPlayerTwoIcon();
-            this.button.setText(buttonText);
+//            this.button.setText(buttonText);
             if(buttonText.length()>1){
                 conpressPic(buttonText);
+            }else if (buttonText.equals("X")){
+
+                String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\X.jpg");
+//                System.out.println(tempFileName);
+                conpressPic (tempFileName);
+            }else if (buttonText.equals("O")){
+                String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\O.jpg");
+
+                conpressPic (tempFileName);
             }else this.button.setText(buttonText);
 
             model.currentTurn = TicTacToeObj.PLAYER_ONE;

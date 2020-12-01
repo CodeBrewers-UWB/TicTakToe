@@ -6,15 +6,19 @@ import com.uwbothell.softwaremanagement.model.TicTacToeObj;
 import com.uwbothell.softwaremanagement.view.*;
 
 import javax.swing.*;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class GameController {
+public class GameController  {
     GameView gameView;
     StartFrame startFrame;
     TicTacToeObj model;
     GameHistoryObj gamehistory;
+
+    private static final int CONTINUE = 0;
+    private static final int EXIT = 1;
 
     public GameController(GameView gameView, TicTacToeObj model, StartFrame startFrame,GameHistoryObj history) {
         this.gameView = gameView;
@@ -110,24 +114,38 @@ public class GameController {
         if (isGameOverWithWinner(winner)) {
             // Winner is decided so game ends
         	stopClock();
-            String winningMessage = "Congratulations Player " + getWinner(winner, gridModel) + " Won!";
-            JOptionPane.showConfirmDialog(null, winningMessage);
-            gridModel.updateHistory(winner);
-            gamehistory.putGameData(gridModel.getPlayerOneName()+" & "+gridModel.getPlayerTwoName(),gridModel.getHistory());
-            resetGame();
 
+            String winningMessage = "Congratulations Player " + getWinner(winner, gridModel) + " Won!";
+            //JOptionPane.showConfirmDialog(null, winningMessage);
+            Object[] options =new String[] { "CONTINUE", "EXIT" };
+            int choice = JOptionPane.showOptionDialog(null, winningMessage, "Select option",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                    null, options, options[0]);
+            takeAction(choice, gridModel,winner);
         } else if (isGameOverWithTie()) {
             //game is Tie so game ends
         	stopClock();
             String tieMessage = "Game Over. No Winner.";
-            JOptionPane.showConfirmDialog(null, tieMessage);
-            gridModel.updateHistory(winner);
-            gamehistory.putGameData(gridModel.getPlayerOneName()+" & "+gridModel.getPlayerTwoName(),gridModel.getHistory());
-            resetGame();
-            
+            //JOptionPane.showConfirmDialog(null, tieMessage);
+            Object[] options = new String[]{ "CONTINUE", "CANCEL" };
+            int choice = JOptionPane.showOptionDialog(null, tieMessage, "Select option",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                    null, options, options[0]);
+            takeAction(choice, gridModel, winner);
         }
     }
 
+    private void takeAction(int choice, GridModel gridModel, int winner) {
+        if(choice == CONTINUE){
+            gridModel.updateHistory(winner);
+            gamehistory.putGameData(gridModel.getPlayerOneName()+" & "+gridModel.getPlayerTwoName(),gridModel.getHistory());
+            resetGame();
+        }
+        else
+        {
+            gameView.mainFrame.dispatchEvent(new WindowEvent(gameView.mainFrame, WindowEvent.WINDOW_CLOSING));
+        }
+    }
     private boolean threeEqual(int a, int b, int c) {
         boolean isEqual = false;
 
