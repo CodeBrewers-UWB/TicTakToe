@@ -22,7 +22,7 @@ public class TicTacToeObj {
     public static final int PLAYER_TWO = 2;
     public static final int GAME_IN_PROGRESS = 0;
 
-    public int[] container;
+    public static  int[] container;
 
     public int currentTurn;
 
