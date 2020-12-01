@@ -18,6 +18,10 @@ public class GridButtonListener implements ActionListener {
     int buttonID;
     GameController controller;
     GridModel gridModel;
+    int ClickonPlaywithComputer= PlaywithcomListener.ClickonPlaywithComputer;
+    JButton button2;
+    int randomNumber;
+    Random random = new Random();
 
     public GridButtonListener(JButton button, int buttonID, GameController controller, GridModel gridModel){
         this.controller = controller;
@@ -28,6 +32,62 @@ public class GridButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+        if (ClickonPlaywithComputer == 1) 
+    	{
+    	
+    	 
+            model = controller.getModel();
+
+            if(button.getText().length()>0){
+                // pop up error or do nothing
+                System.out.println("grid occupied");
+            }
+          
+            else {          
+            	String buttonText = gridModel.getPlayerOneIcon();
+            this.button.setText(buttonText);
+            model.setValue(buttonID, TicTacToeObj.CROSS);
+
+
+        int c = random.nextInt(8);
+        
+        for(int i =0 ; i <= TicTacToeObj.container.length ; i++) 
+    	{
+    		if (TicTacToeObj.container[c] == 1 || TicTacToeObj.container[c] == 2) 
+    		{
+    			c= random.nextInt(8);
+    		}
+    		else 
+    		{
+    	        
+                button2 = TicTacToePanel.buttons[c];
+                
+                if(button2.getText().length()>0){
+                    // pop up error or do nothing
+                    System.out.println("grid occupied");
+                }
+                String buttonText2 = gridModel.getPlayerTwoIcon();
+    		     
+                this.button2.setText(buttonText2);
+    	             model.setValue(c, TicTacToeObj.CIRCLE);
+    	             
+                    controller.checkWinner(gridModel);
+                    controller.resetClock();	
+    			break;
+    		}
+    	
+    	}
+        
+        controller.checkWinner(gridModel);
+        controller.resetClock();
+        
+        }
+ 
+    	
+
+    	}
+        else {
         model = controller.getModel();
 
         String filePath = new File("").getAbsolutePath();
@@ -78,7 +138,7 @@ public class GridButtonListener implements ActionListener {
         controller.updatePlayerIndicator(gridModel);
         controller.checkWinner(gridModel);
         controller.resetClock();
-    }
+    }}
 
     private void conpressPic(String path){
         BufferedImage pic = null;
