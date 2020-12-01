@@ -34,7 +34,19 @@ public class SouthPanel extends JPanel{
 
     public void initSouthPanel(){
         panel = new JPanel();
-        label1 = new JLabel(gridModel.getPlayerOneName() + "  [" +gridModel.getPlayerOneIcon() +"] " + ": " +gridModel.getPlayerOneWins() + "     Vs    " + gridModel.getPlayerTwoName() + "  [" + gridModel.getPlayerTwoIcon() + "] " + ": " +gridModel.getPlayerTwoWins() );
+        String playerOneIcon = gridModel.getPlayerOneIcon().length()>2? "custom" : gridModel.getPlayerOneIcon();
+        String playerTwoIcon = gridModel.getPlayerTwoIcon().length()>2? "custom" : gridModel.getPlayerTwoIcon();
+
+        label1 = new JLabel(gridModel.getPlayerOneName()
+                + "  [" + playerOneIcon
+                +"] " + ": "
+                +gridModel.getPlayerOneWins()
+                + "     Vs    "
+                + gridModel.getPlayerTwoName()
+                + "  ["
+                + playerTwoIcon
+                + "] " + ": "
+                +gridModel.getPlayerTwoWins() );
         // label1.setIconTextGap(10);
         label2 = new JLabel("Draw    : "+gridModel.getDraw());
         //label2.setIconTextGap(10);
