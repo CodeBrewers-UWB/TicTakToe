@@ -44,12 +44,28 @@ public class GridButtonListener implements ActionListener {
                 conpressPic(buttonText);
             }else if (buttonText.equals("X")){
 
-                String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\X.jpg");
+                //String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\X.jpg");
 //                System.out.println(tempFileName);
+                String tempFileName = filePath.concat(File.separator
+                        + "TicTacToe" + File.separator
+                        + "src" + File.separator
+                        + "com" + File.separator
+                        + "uwbothell" + File.separator
+                        + "softwaremanagement" + File.separator
+                        + "resources" + File.separator
+                        + "X.jpg");
                 conpressPic (tempFileName);
             }else if (buttonText.equals("O")){
-                String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\O.jpg");
+                //String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\O.jpg");
 
+                String tempFileName = filePath.concat(File.separator
+                        + "TicTacToe" + File.separator
+                        + "src" + File.separator
+                        + "com" + File.separator
+                        + "uwbothell" + File.separator
+                        + "softwaremanagement" + File.separator
+                        + "resources" + File.separator
+                        + "O.jpg");
                 conpressPic (tempFileName);
             }else this.button.setText(buttonText);
 
@@ -63,12 +79,28 @@ public class GridButtonListener implements ActionListener {
                 conpressPic(buttonText);
             }else if (buttonText.equals("X")){
 
-                String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\X.jpg");
+//                String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\X.jpg");
 //                System.out.println(tempFileName);
+                //String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\X.jpg");
+                String tempFileName = filePath.concat(File.separator
+                        + "TicTacToe" + File.separator
+                        + "src" + File.separator
+                        + "com" + File.separator
+                        + "uwbothell" + File.separator
+                        + "softwaremanagement" + File.separator
+                        + "resources" + File.separator
+                        + "X.jpg");
                 conpressPic (tempFileName);
             }else if (buttonText.equals("O")){
-                String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\O.jpg");
-
+                //String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\O.jpg");
+                String tempFileName = filePath.concat(File.separator
+                        + "TicTacToe" + File.separator
+                        + "src" + File.separator
+                        + "com" + File.separator
+                        + "uwbothell" + File.separator
+                        + "softwaremanagement" + File.separator
+                        + "resources" + File.separator
+                        + "O.jpg");
                 conpressPic (tempFileName);
             }else this.button.setText(buttonText);
 
