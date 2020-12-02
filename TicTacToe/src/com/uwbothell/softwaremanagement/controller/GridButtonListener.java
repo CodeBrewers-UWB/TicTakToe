@@ -41,32 +41,13 @@ public class GridButtonListener implements ActionListener {
 //            this.button.setText(buttonText);
 
             if(buttonText.length()>1){
-                conpressPic(buttonText);
+                compressPic(buttonText);
             }else if (buttonText.equals("X")){
-
-                //String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\X.jpg");
-//                System.out.println(tempFileName);
-                String tempFileName = filePath.concat(File.separator
-                        + "TicTacToe" + File.separator
-                        + "src" + File.separator
-                        + "com" + File.separator
-                        + "uwbothell" + File.separator
-                        + "softwaremanagement" + File.separator
-                        + "resources" + File.separator
-                        + "X.jpg");
-                conpressPic (tempFileName);
+                String tempFileName = filePath.concat(generatePicPath("X.jpg"));
+                compressPic(tempFileName);
             }else if (buttonText.equals("O")){
-                //String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\O.jpg");
-
-                String tempFileName = filePath.concat(File.separator
-                        + "TicTacToe" + File.separator
-                        + "src" + File.separator
-                        + "com" + File.separator
-                        + "uwbothell" + File.separator
-                        + "softwaremanagement" + File.separator
-                        + "resources" + File.separator
-                        + "O.jpg");
-                conpressPic (tempFileName);
+                String tempFileName = filePath.concat(generatePicPath("O.jpg"));
+                compressPic(tempFileName);
             }else this.button.setText(buttonText);
 
             model.currentTurn = TicTacToeObj.PLAYER_TWO;
@@ -76,32 +57,13 @@ public class GridButtonListener implements ActionListener {
             String buttonText = gridModel.getPlayerTwoIcon();
 //            this.button.setText(buttonText);
             if(buttonText.length()>1){
-                conpressPic(buttonText);
+                compressPic(buttonText);
             }else if (buttonText.equals("X")){
-
-//                String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\X.jpg");
-//                System.out.println(tempFileName);
-                //String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\X.jpg");
-                String tempFileName = filePath.concat(File.separator
-                        + "TicTacToe" + File.separator
-                        + "src" + File.separator
-                        + "com" + File.separator
-                        + "uwbothell" + File.separator
-                        + "softwaremanagement" + File.separator
-                        + "resources" + File.separator
-                        + "X.jpg");
-                conpressPic (tempFileName);
+                String tempFileName = filePath.concat(generatePicPath("X.jpg"));
+                compressPic(tempFileName);
             }else if (buttonText.equals("O")){
-                //String tempFileName = filePath.concat("\\TicTacToe\\src\\com\\uwbothell\\softwaremanagement\\resources\\O.jpg");
-                String tempFileName = filePath.concat(File.separator
-                        + "TicTacToe" + File.separator
-                        + "src" + File.separator
-                        + "com" + File.separator
-                        + "uwbothell" + File.separator
-                        + "softwaremanagement" + File.separator
-                        + "resources" + File.separator
-                        + "O.jpg");
-                conpressPic (tempFileName);
+                String tempFileName = filePath.concat(generatePicPath("O.jpg"));
+                compressPic(tempFileName);
             }else this.button.setText(buttonText);
 
             model.currentTurn = TicTacToeObj.PLAYER_ONE;
@@ -112,7 +74,7 @@ public class GridButtonListener implements ActionListener {
         controller.resetClock();
     }
 
-    private void conpressPic(String path){
+    private void compressPic(String path){
         BufferedImage pic = null;
         try {
             pic = ImageIO.read(new File(path));
@@ -128,5 +90,17 @@ public class GridButtonListener implements ActionListener {
 
         JLabel picLabel = new JLabel(new ImageIcon(newImage));
         this.button.add(picLabel);
+    }
+
+    private String generatePicPath(String name){
+        String path = File.separator
+                + "TicTacToe" + File.separator
+                + "src" + File.separator
+                + "com" + File.separator
+                + "uwbothell" + File.separator
+                + "softwaremanagement" + File.separator
+                + "resources" + File.separator
+                + name;
+        return path;
     }
 }
