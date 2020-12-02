@@ -46,10 +46,21 @@ public class SouthPanel extends JPanel{
                 + "  ["
                 + playerTwoIcon
                 + "] " + ": "
-                +gridModel.getPlayerTwoWins() );
+                +gridModel.getPlayerTwoWins()
+                +"   Draw  : "+gridModel.getDraw() );
+
+        label1.setFont(new java.awt.Font("Zapfino", Font.BOLD, 10));
+        label1.setForeground(Color.RED);
+
         // label1.setIconTextGap(10);
-        label2 = new JLabel("Draw    : "+gridModel.getDraw());
+      //  label2 = new JLabel("Draw    : "+gridModel.getDraw());
         //label2.setIconTextGap(10);
+
+
+//        label1 = new JLabel(gridModel.getPlayerOneName() + "  [" +gridModel.getPlayerOneIcon() +"] " + ": " +gridModel.getPlayerOneWins() + "     Vs    " + gridModel.getPlayerTwoName()
+//                + "  [" + gridModel.getPlayerTwoIcon() + "] " + ": " +gridModel.getPlayerTwoWins()+"   Draw  : "+gridModel.getDraw() );
+//        label1.setFont(new java.awt.Font("Arial", Font.BOLD, 15));
+//        label1.setForeground(Color.BLUE);
 
         button = new JButton("Restart");
         button.setPreferredSize(new Dimension(GamePanelSetting.getRestartButtonWidth(), GamePanelSetting.getRestartButtonHeight()));
