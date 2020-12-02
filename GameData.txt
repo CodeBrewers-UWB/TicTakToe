@@ -1,2 +1,0 @@
-Aden & Bob=1,0,1
-Aden & Computer=6,2,1
