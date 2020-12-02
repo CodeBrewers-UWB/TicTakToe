@@ -2,6 +2,7 @@ package com.uwbothell.softwaremanagement.controller;
 
 import com.uwbothell.softwaremanagement.model.GridModel;
 import com.uwbothell.softwaremanagement.model.TicTacToeObj;
+import com.uwbothell.softwaremanagement.view.TicTacToePanel;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -11,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 public class GridButtonListener implements ActionListener {
     TicTacToeObj model;

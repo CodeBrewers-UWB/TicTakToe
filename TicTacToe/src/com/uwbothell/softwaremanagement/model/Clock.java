@@ -1,5 +1,7 @@
 package com.uwbothell.softwaremanagement.model;
 
+import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -21,7 +23,13 @@ public class Clock implements Runnable{
 	}
 	
 	public void setClockLabel(int seconds) {
-		clockLabel.setText("Time : " + seconds);
+		if(seconds <= 10) {
+			clockLabel.setForeground(Color.red);
+		}
+		else {
+			clockLabel.setForeground(Color.black);
+		}
+		clockLabel.setText("Time : " + seconds);		
 	}
 	
 	public JLabel getClockLabel() {
