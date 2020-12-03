@@ -93,7 +93,7 @@ public class StartFrameModel {
 
     private void initImageLabel() {
         try {
-            imageLabel = new JLabel(compressPicFromURL("https://i.ibb.co/GtTW6Sy/bg3.png", 200, 200));
+            imageLabel = new JLabel(compressPicFromURL("https://i.ibb.co/HFNfRz7/New-Project-20.png", 200, 200));
         }
         catch (Exception ex) {
 
@@ -102,7 +102,7 @@ public class StartFrameModel {
 
     private void initStartButton() {
         try {
-            startButton = new JButton(compressPicFromURL("https://i.ibb.co/VYSgDBf/play-icon.png", 120, 35));
+            startButton = new JButton(compressPicFromURL("https://i.ibb.co/cC82z53/Screen-Shot-2020-12-01-at-11-06-04-PM.png", 150, 50));
         }
         catch (Exception ex) {
             System.out.println("pooh");
@@ -110,7 +110,7 @@ public class StartFrameModel {
     }
     
       private void initPlayeithcomButton() {
-    	Playwithcom=new JButton(StartGameFrameSetting.getPlaywithcomButtonText());
+    	Playwithcom=new JButton("https://i.ibb.co/dQ40K81/Screen-Shot-2020-12-01-at-11-20-06-PM.png", 150, 50);
     }
 
     private ImageIcon compressPicFromURL(String urlString, int width, int height){
@@ -135,7 +135,7 @@ public class StartFrameModel {
 
         int textFieldX = StartGameFrameSetting.getTextFieldXBounds();
 
-        imageLabel.setBounds(70, 20, 200, 200);
+        imageLabel.setBounds(90, 50, 200, 200);
         label1.setBounds(labelX, yBounds, labelWidth, labelHeight);
         comboBox1Label.setBounds(labelX, yBounds + 40, labelWidth, labelHeight);
         label2.setBounds(labelX, yBounds + yOffset, labelWidth, labelHeight);
@@ -145,8 +145,8 @@ public class StartFrameModel {
         comboBox1.setBounds(150, yBounds + 40,90,20);
         comboBox2.setBounds(150, yBounds + yOffset + 40, 90, 20);
        // startButton.setBounds(80, yBounds + yOffset + 100, 150, 50);
-        startButton.setBounds(130, 450, 120, 30);
-        Playwithcom.setBounds(110 , 490,160,  39);
+        startButton.setBounds(120, 429, 150, 40);
+        Playwithcom.setBounds(120 , 480,150,  44);
     }
 
     public void setButtonListener(StartButtonListener listener) {
