@@ -37,6 +37,9 @@ public class SouthPanel extends JPanel{
         String playerOneIcon = gridModel.getPlayerOneIcon().length()>2? "custom" : gridModel.getPlayerOneIcon();
         String playerTwoIcon = gridModel.getPlayerTwoIcon().length()>2? "custom" : gridModel.getPlayerTwoIcon();
 
+        label=new JLabel("Game Scores :",SwingConstants.CENTER);
+        label.setFont(new java.awt.Font("Arial", Font.BOLD, 12));
+        label.setForeground(Color.blue);
         label1 = new JLabel(gridModel.getPlayerOneName()
                 + "  [" + playerOneIcon
                 +"] " + ": "
@@ -49,25 +52,14 @@ public class SouthPanel extends JPanel{
                 +gridModel.getPlayerTwoWins()
                 +"   Draw  : "+gridModel.getDraw() );
 
-        label1.setFont(new java.awt.Font("Zapfino", Font.BOLD, 10));
-        label1.setForeground(Color.RED);
-
-        // label1.setIconTextGap(10);
-      //  label2 = new JLabel("Draw    : "+gridModel.getDraw());
-        //label2.setIconTextGap(10);
-
-
-//        label1 = new JLabel(gridModel.getPlayerOneName() + "  [" +gridModel.getPlayerOneIcon() +"] " + ": " +gridModel.getPlayerOneWins() + "     Vs    " + gridModel.getPlayerTwoName()
-//                + "  [" + gridModel.getPlayerTwoIcon() + "] " + ": " +gridModel.getPlayerTwoWins()+"   Draw  : "+gridModel.getDraw() );
-//        label1.setFont(new java.awt.Font("Arial", Font.BOLD, 15));
-//        label1.setForeground(Color.BLUE);
+        label1.setFont(new java.awt.Font("Arial", Font.BOLD, 12));
 
         button = new JButton("Restart");
         button.setPreferredSize(new Dimension(GamePanelSetting.getRestartButtonWidth(), GamePanelSetting.getRestartButtonHeight()));
         button.addActionListener(new ResetButtonListener(controller));
 
         panel.setPreferredSize(new Dimension(GamePanelSetting.getSouthPanelWidth(), GamePanelSetting.getSouthPanelHeight()));
-
+        panel.add(label);
         panel.add(label1);
         panel.add(button);
         panel.setBackground(new Color(FrameConstants.r, FrameConstants.g, FrameConstants.b));

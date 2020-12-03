@@ -110,7 +110,7 @@ public class StartFrameModel {
     }
     
       private void initPlayeithcomButton() {
-    	Playwithcom=new JButton("https://i.ibb.co/dQ40K81/Screen-Shot-2020-12-01-at-11-20-06-PM.png", 150, 50);
+    	Playwithcom=new JButton(compressPicFromURL("https://i.ibb.co/dQ40K81/Screen-Shot-2020-12-01-at-11-20-06-PM.png", 150, 50));
     }
 
     private ImageIcon compressPicFromURL(String urlString, int width, int height){
