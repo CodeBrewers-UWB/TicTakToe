@@ -10,7 +10,7 @@ public class GamePanelSetting {
     public static int restartButtonHeight = 20;
 
     public static int southPanelWidth = 300;
-    public static int southPanelHeight = 60;
+    public static int southPanelHeight = 70;
 
     public static int gridButtonWidth = 250;
     public static int gridButtonHeight = 200;
