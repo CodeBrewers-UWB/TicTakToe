@@ -33,7 +33,6 @@ public class SouthPanel extends JPanel{
     }
 
     public void initSouthPanel(){
-        panel = new JPanel();
         String playerOneIcon = gridModel.getPlayerOneIcon().length()>2? "custom" : gridModel.getPlayerOneIcon();
         String playerTwoIcon = gridModel.getPlayerTwoIcon().length()>2? "custom" : gridModel.getPlayerTwoIcon();
 
@@ -58,12 +57,11 @@ public class SouthPanel extends JPanel{
         button.setPreferredSize(new Dimension(GamePanelSetting.getRestartButtonWidth(), GamePanelSetting.getRestartButtonHeight()));
         button.addActionListener(new ResetButtonListener(controller));
 
-        panel.setPreferredSize(new Dimension(GamePanelSetting.getSouthPanelWidth(), GamePanelSetting.getSouthPanelHeight()));
-        panel.add(label);
-        panel.add(label1);
-        panel.add(button);
-        panel.setBackground(new Color(FrameConstants.r, FrameConstants.g, FrameConstants.b));
-        this.add(panel);
+        this.setPreferredSize(new Dimension(GamePanelSetting.getSouthPanelWidth(), GamePanelSetting.getSouthPanelHeight()));
+        this.add(label);
+        this.add(label1);
+        this.add(button);
+        this.setBackground(new Color(FrameConstants.r, FrameConstants.g, FrameConstants.b));
         this.setBackground(new Color(FrameConstants.r, FrameConstants.g, FrameConstants.b));
 
     }
